@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+<title>Аргументы функции <code>fbGetMarketingStat</code></title>
+
+<script type="text/javascript">
+window.onload = function() {
+  var imgs = document.getElementsByTagName('img'), i, img;
+  for (i = 0; i < imgs.length; i++) {
+    img = imgs[i];
+    // center an image if it is the only element of its parent
+    if (img.parentElement.childElementCount === 1)
+      img.parentElement.style.textAlign = 'center';
+  }
+};
+</script>
+
+<!-- Styles for R syntax highlighter -->
+<style type="text/css">
+   pre .operator,
+   pre .paren {
+     color: rgb(104, 118, 135)
+   }
+
+   pre .literal {
+     color: #990073
+   }
+
+   pre .number {
+     color: #099;
+   }
+
+   pre .comment {
+     color: #998;
+     font-style: italic
+   }
+
+   pre .keyword {
+     color: #900;
+     font-weight: bold
+   }
+
+   pre .identifier {
+     color: rgb(0, 0, 0);
+   }
+
+   pre .string {
+     color: #d14;
+   }
+</style>
+
+<!-- R syntax highlighter -->
+<script type="text/javascript">
+var hljs=new function(){function m(p){return p.replace(/&/gm,"&amp;").replace(/</gm,"&lt;")}function f(r,q,p){return RegExp(q,"m"+(r.cI?"i":"")+(p?"g":""))}function b(r){for(var p=0;p<r.childNodes.length;p++){var q=r.childNodes[p];if(q.nodeName=="CODE"){return q}if(!(q.nodeType==3&&q.nodeValue.match(/\s+/))){break}}}function h(t,s){var p="";for(var r=0;r<t.childNodes.length;r++){if(t.childNodes[r].nodeType==3){var q=t.childNodes[r].nodeValue;if(s){q=q.replace(/\n/g,"")}p+=q}else{if(t.childNodes[r].nodeName=="BR"){p+="\n"}else{p+=h(t.childNodes[r])}}}if(/MSIE [678]/.test(navigator.userAgent)){p=p.replace(/\r/g,"\n")}return p}function a(s){var r=s.className.split(/\s+/);r=r.concat(s.parentNode.className.split(/\s+/));for(var q=0;q<r.length;q++){var p=r[q].replace(/^language-/,"");if(e[p]){return p}}}function c(q){var p=[];(function(s,t){for(var r=0;r<s.childNodes.length;r++){if(s.childNodes[r].nodeType==3){t+=s.childNodes[r].nodeValue.length}else{if(s.childNodes[r].nodeName=="BR"){t+=1}else{if(s.childNodes[r].nodeType==1){p.push({event:"start",offset:t,node:s.childNodes[r]});t=arguments.callee(s.childNodes[r],t);p.push({event:"stop",offset:t,node:s.childNodes[r]})}}}}return t})(q,0);return p}function k(y,w,x){var q=0;var z="";var s=[];function u(){if(y.length&&w.length){if(y[0].offset!=w[0].offset){return(y[0].offset<w[0].offset)?y:w}else{return w[0].event=="start"?y:w}}else{return y.length?y:w}}function t(D){var A="<"+D.nodeName.toLowerCase();for(var B=0;B<D.attributes.length;B++){var C=D.attributes[B];A+=" "+C.nodeName.toLowerCase();if(C.value!==undefined&&C.value!==false&&C.value!==null){A+='="'+m(C.value)+'"'}}return A+">"}while(y.length||w.length){var v=u().splice(0,1)[0];z+=m(x.substr(q,v.offset-q));q=v.offset;if(v.event=="start"){z+=t(v.node);s.push(v.node)}else{if(v.event=="stop"){var p,r=s.length;do{r--;p=s[r];z+=("</"+p.nodeName.toLowerCase()+">")}while(p!=v.node);s.splice(r,1);while(r<s.length){z+=t(s[r]);r++}}}}return z+m(x.substr(q))}function j(){function q(x,y,v){if(x.compiled){return}var u;var s=[];if(x.k){x.lR=f(y,x.l||hljs.IR,true);for(var w in x.k){if(!x.k.hasOwnProperty(w)){continue}if(x.k[w] instanceof Object){u=x.k[w]}else{u=x.k;w="keyword"}for(var r in u){if(!u.hasOwnProperty(r)){continue}x.k[r]=[w,u[r]];s.push(r)}}}if(!v){if(x.bWK){x.b="\\b("+s.join("|")+")\\s"}x.bR=f(y,x.b?x.b:"\\B|\\b");if(!x.e&&!x.eW){x.e="\\B|\\b"}if(x.e){x.eR=f(y,x.e)}}if(x.i){x.iR=f(y,x.i)}if(x.r===undefined){x.r=1}if(!x.c){x.c=[]}x.compiled=true;for(var t=0;t<x.c.length;t++){if(x.c[t]=="self"){x.c[t]=x}q(x.c[t],y,false)}if(x.starts){q(x.starts,y,false)}}for(var p in e){if(!e.hasOwnProperty(p)){continue}q(e[p].dM,e[p],true)}}function d(B,C){if(!j.called){j();j.called=true}function q(r,M){for(var L=0;L<M.c.length;L++){if((M.c[L].bR.exec(r)||[null])[0]==r){return M.c[L]}}}function v(L,r){if(D[L].e&&D[L].eR.test(r)){return 1}if(D[L].eW){var M=v(L-1,r);return M?M+1:0}return 0}function w(r,L){return L.i&&L.iR.test(r)}function K(N,O){var M=[];for(var L=0;L<N.c.length;L++){M.push(N.c[L].b)}var r=D.length-1;do{if(D[r].e){M.push(D[r].e)}r--}while(D[r+1].eW);if(N.i){M.push(N.i)}return f(O,M.join("|"),true)}function p(M,L){var N=D[D.length-1];if(!N.t){N.t=K(N,E)}N.t.lastIndex=L;var r=N.t.exec(M);return r?[M.substr(L,r.index-L),r[0],false]:[M.substr(L),"",true]}function z(N,r){var L=E.cI?r[0].toLowerCase():r[0];var M=N.k[L];if(M&&M instanceof Array){return M}return false}function F(L,P){L=m(L);if(!P.k){return L}var r="";var O=0;P.lR.lastIndex=0;var M=P.lR.exec(L);while(M){r+=L.substr(O,M.index-O);var N=z(P,M);if(N){x+=N[1];r+='<span class="'+N[0]+'">'+M[0]+"</span>"}else{r+=M[0]}O=P.lR.lastIndex;M=P.lR.exec(L)}return r+L.substr(O,L.length-O)}function J(L,M){if(M.sL&&e[M.sL]){var r=d(M.sL,L);x+=r.keyword_count;return r.value}else{return F(L,M)}}function I(M,r){var L=M.cN?'<span class="'+M.cN+'">':"";if(M.rB){y+=L;M.buffer=""}else{if(M.eB){y+=m(r)+L;M.buffer=""}else{y+=L;M.buffer=r}}D.push(M);A+=M.r}function G(N,M,Q){var R=D[D.length-1];if(Q){y+=J(R.buffer+N,R);return false}var P=q(M,R);if(P){y+=J(R.buffer+N,R);I(P,M);return P.rB}var L=v(D.length-1,M);if(L){var O=R.cN?"</span>":"";if(R.rE){y+=J(R.buffer+N,R)+O}else{if(R.eE){y+=J(R.buffer+N,R)+O+m(M)}else{y+=J(R.buffer+N+M,R)+O}}while(L>1){O=D[D.length-2].cN?"</span>":"";y+=O;L--;D.length--}var r=D[D.length-1];D.length--;D[D.length-1].buffer="";if(r.starts){I(r.starts,"")}return R.rE}if(w(M,R)){throw"Illegal"}}var E=e[B];var D=[E.dM];var A=0;var x=0;var y="";try{var s,u=0;E.dM.buffer="";do{s=p(C,u);var t=G(s[0],s[1],s[2]);u+=s[0].length;if(!t){u+=s[1].length}}while(!s[2]);if(D.length>1){throw"Illegal"}return{r:A,keyword_count:x,value:y}}catch(H){if(H=="Illegal"){return{r:0,keyword_count:0,value:m(C)}}else{throw H}}}function g(t){var p={keyword_count:0,r:0,value:m(t)};var r=p;for(var q in e){if(!e.hasOwnProperty(q)){continue}var s=d(q,t);s.language=q;if(s.keyword_count+s.r>r.keyword_count+r.r){r=s}if(s.keyword_count+s.r>p.keyword_count+p.r){r=p;p=s}}if(r.language){p.second_best=r}return p}function i(r,q,p){if(q){r=r.replace(/^((<[^>]+>|\t)+)/gm,function(t,w,v,u){return w.replace(/\t/g,q)})}if(p){r=r.replace(/\n/g,"<br>")}return r}function n(t,w,r){var x=h(t,r);var v=a(t);var y,s;if(v){y=d(v,x)}else{return}var q=c(t);if(q.length){s=document.createElement("pre");s.innerHTML=y.value;y.value=k(q,c(s),x)}y.value=i(y.value,w,r);var u=t.className;if(!u.match("(\\s|^)(language-)?"+v+"(\\s|$)")){u=u?(u+" "+v):v}if(/MSIE [678]/.test(navigator.userAgent)&&t.tagName=="CODE"&&t.parentNode.tagName=="PRE"){s=t.parentNode;var p=document.createElement("div");p.innerHTML="<pre><code>"+y.value+"</code></pre>";t=p.firstChild.firstChild;p.firstChild.cN=s.cN;s.parentNode.replaceChild(p.firstChild,s)}else{t.innerHTML=y.value}t.className=u;t.result={language:v,kw:y.keyword_count,re:y.r};if(y.second_best){t.second_best={language:y.second_best.language,kw:y.second_best.keyword_count,re:y.second_best.r}}}function o(){if(o.called){return}o.called=true;var r=document.getElementsByTagName("pre");for(var p=0;p<r.length;p++){var q=b(r[p]);if(q){n(q,hljs.tabReplace)}}}function l(){if(window.addEventListener){window.addEventListener("DOMContentLoaded",o,false);window.addEventListener("load",o,false)}else{if(window.attachEvent){window.attachEvent("onload",o)}else{window.onload=o}}}var e={};this.LANGUAGES=e;this.highlight=d;this.highlightAuto=g;this.fixMarkup=i;this.highlightBlock=n;this.initHighlighting=o;this.initHighlightingOnLoad=l;this.IR="[a-zA-Z][a-zA-Z0-9_]*";this.UIR="[a-zA-Z_][a-zA-Z0-9_]*";this.NR="\\b\\d+(\\.\\d+)?";this.CNR="\\b(0[xX][a-fA-F0-9]+|(\\d+(\\.\\d*)?|\\.\\d+)([eE][-+]?\\d+)?)";this.BNR="\\b(0b[01]+)";this.RSR="!|!=|!==|%|%=|&|&&|&=|\\*|\\*=|\\+|\\+=|,|\\.|-|-=|/|/=|:|;|<|<<|<<=|<=|=|==|===|>|>=|>>|>>=|>>>|>>>=|\\?|\\[|\\{|\\(|\\^|\\^=|\\||\\|=|\\|\\||~";this.ER="(?![\\s\\S])";this.BE={b:"\\\\.",r:0};this.ASM={cN:"string",b:"'",e:"'",i:"\\n",c:[this.BE],r:0};this.QSM={cN:"string",b:'"',e:'"',i:"\\n",c:[this.BE],r:0};this.CLCM={cN:"comment",b:"//",e:"$"};this.CBLCLM={cN:"comment",b:"/\\*",e:"\\*/"};this.HCM={cN:"comment",b:"#",e:"$"};this.NM={cN:"number",b:this.NR,r:0};this.CNM={cN:"number",b:this.CNR,r:0};this.BNM={cN:"number",b:this.BNR,r:0};this.inherit=function(r,s){var p={};for(var q in r){p[q]=r[q]}if(s){for(var q in s){p[q]=s[q]}}return p}}();hljs.LANGUAGES.cpp=function(){var a={keyword:{"false":1,"int":1,"float":1,"while":1,"private":1,"char":1,"catch":1,"export":1,virtual:1,operator:2,sizeof:2,dynamic_cast:2,typedef:2,const_cast:2,"const":1,struct:1,"for":1,static_cast:2,union:1,namespace:1,unsigned:1,"long":1,"throw":1,"volatile":2,"static":1,"protected":1,bool:1,template:1,mutable:1,"if":1,"public":1,friend:2,"do":1,"return":1,"goto":1,auto:1,"void":2,"enum":1,"else":1,"break":1,"new":1,extern:1,using:1,"true":1,"class":1,asm:1,"case":1,typeid:1,"short":1,reinterpret_cast:2,"default":1,"double":1,register:1,explicit:1,signed:1,typename:1,"try":1,"this":1,"switch":1,"continue":1,wchar_t:1,inline:1,"delete":1,alignof:1,char16_t:1,char32_t:1,constexpr:1,decltype:1,noexcept:1,nullptr:1,static_assert:1,thread_local:1,restrict:1,_Bool:1,complex:1},built_in:{std:1,string:1,cin:1,cout:1,cerr:1,clog:1,stringstream:1,istringstream:1,ostringstream:1,auto_ptr:1,deque:1,list:1,queue:1,stack:1,vector:1,map:1,set:1,bitset:1,multiset:1,multimap:1,unordered_set:1,unordered_map:1,unordered_multiset:1,unordered_multimap:1,array:1,shared_ptr:1}};return{dM:{k:a,i:"</",c:[hljs.CLCM,hljs.CBLCLM,hljs.QSM,{cN:"string",b:"'\\\\?.",e:"'",i:"."},{cN:"number",b:"\\b(\\d+(\\.\\d*)?|\\.\\d+)(u|U|l|L|ul|UL|f|F)"},hljs.CNM,{cN:"preprocessor",b:"#",e:"$"},{cN:"stl_container",b:"\\b(deque|list|queue|stack|vector|map|set|bitset|multiset|multimap|unordered_map|unordered_set|unordered_multiset|unordered_multimap|array)\\s*<",e:">",k:a,r:10,c:["self"]}]}}}();hljs.LANGUAGES.r={dM:{c:[hljs.HCM,{cN:"number",b:"\\b0[xX][0-9a-fA-F]+[Li]?\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"number",b:"\\b\\d+(?:[eE][+\\-]?\\d*)?L\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"number",b:"\\b\\d+\\.(?!\\d)(?:i\\b)?",e:hljs.IMMEDIATE_RE,r:1},{cN:"number",b:"\\b\\d+(?:\\.\\d*)?(?:[eE][+\\-]?\\d*)?i?\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"number",b:"\\.\\d+(?:[eE][+\\-]?\\d*)?i?\\b",e:hljs.IMMEDIATE_RE,r:1},{cN:"keyword",b:"(?:tryCatch|library|setGeneric|setGroupGeneric)\\b",e:hljs.IMMEDIATE_RE,r:10},{cN:"keyword",b:"\\.\\.\\.",e:hljs.IMMEDIATE_RE,r:10},{cN:"keyword",b:"\\.\\.\\d+(?![\\w.])",e:hljs.IMMEDIATE_RE,r:10},{cN:"keyword",b:"\\b(?:function)",e:hljs.IMMEDIATE_RE,r:2},{cN:"keyword",b:"(?:if|in|break|next|repeat|else|for|return|switch|while|try|stop|warning|require|attach|detach|source|setMethod|setClass)\\b",e:hljs.IMMEDIATE_RE,r:1},{cN:"literal",b:"(?:NA|NA_integer_|NA_real_|NA_character_|NA_complex_)\\b",e:hljs.IMMEDIATE_RE,r:10},{cN:"literal",b:"(?:NULL|TRUE|FALSE|T|F|Inf|NaN)\\b",e:hljs.IMMEDIATE_RE,r:1},{cN:"identifier",b:"[a-zA-Z.][a-zA-Z0-9._]*\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"operator",b:"<\\-(?!\\s*\\d)",e:hljs.IMMEDIATE_RE,r:2},{cN:"operator",b:"\\->|<\\-",e:hljs.IMMEDIATE_RE,r:1},{cN:"operator",b:"%%|~",e:hljs.IMMEDIATE_RE},{cN:"operator",b:">=|<=|==|!=|\\|\\||&&|=|\\+|\\-|\\*|/|\\^|>|<|!|&|\\||\\$|:",e:hljs.IMMEDIATE_RE,r:0},{cN:"operator",b:"%",e:"%",i:"\\n",r:1},{cN:"identifier",b:"`",e:"`",r:0},{cN:"string",b:'"',e:'"',c:[hljs.BE],r:0},{cN:"string",b:"'",e:"'",c:[hljs.BE],r:0},{cN:"paren",b:"[[({\\])}]",e:hljs.IMMEDIATE_RE,r:0}]}};
+hljs.initHighlightingOnLoad();
+</script>
+
+
+
+<style type="text/css">
+body, td {
+   font-family: sans-serif;
+   background-color: white;
+   font-size: 13px;
+}
+
+body {
+  max-width: 800px;
+  margin: auto;
+  padding: 1em;
+  line-height: 20px;
+}
+
+tt, code, pre {
+   font-family: 'DejaVu Sans Mono', 'Droid Sans Mono', 'Lucida Console', Consolas, Monaco, monospace;
+}
+
+h1 {
+   font-size:2.2em;
+}
+
+h2 {
+   font-size:1.8em;
+}
+
+h3 {
+   font-size:1.4em;
+}
+
+h4 {
+   font-size:1.0em;
+}
+
+h5 {
+   font-size:0.9em;
+}
+
+h6 {
+   font-size:0.8em;
+}
+
+a:visited {
+   color: rgb(50%, 0%, 50%);
+}
+
+pre, img {
+  max-width: 100%;
+}
+pre {
+  overflow-x: auto;
+}
+pre code {
+   display: block; padding: 0.5em;
+}
+
+code {
+  font-size: 92%;
+  border: 1px solid #ccc;
+}
+
+code[class] {
+  background-color: #F8F8F8;
+}
+
+table, td, th {
+  border: none;
+}
+
+blockquote {
+   color:#666666;
+   margin:0;
+   padding-left: 1em;
+   border-left: 0.5em #EEE solid;
+}
+
+hr {
+   height: 0px;
+   border-bottom: none;
+   border-top-width: thin;
+   border-top-style: dotted;
+   border-top-color: #999999;
+}
+
+@media print {
+   * {
+      background: transparent !important;
+      color: black !important;
+      filter:none !important;
+      -ms-filter: none !important;
+   }
+
+   body {
+      font-size:12pt;
+      max-width:100%;
+   }
+
+   a, a:visited {
+      text-decoration: underline;
+   }
+
+   hr {
+      visibility: hidden;
+      page-break-before: always;
+   }
+
+   pre, blockquote {
+      padding-right: 1em;
+      page-break-inside: avoid;
+   }
+
+   tr, img {
+      page-break-inside: avoid;
+   }
+
+   img {
+      max-width: 100% !important;
+   }
+
+   @page :left {
+      margin: 15mm 20mm 15mm 10mm;
+   }
+
+   @page :right {
+      margin: 15mm 10mm 15mm 20mm;
+   }
+
+   p, h2, h3 {
+      orphans: 3; widows: 3;
+   }
+
+   h2, h3 {
+      page-break-after: avoid;
+   }
+}
+</style>
+
+
+
+</head>
+
+<body>
+<p>Для загрузки статистических данных из рекламных аккаунтов Facebook в пакете <code>rfacebookstat</code> необходимо использовать функцию <code>fbGetMarketingStat</code>.</p>
+
+<h2>Аргументы функции <code>fbGetMarketingStat</code></h2>
+
+<p>Функция имеет множество аргументов с помощью которых вы можете максимально точно обозначить формат получаемых из API Facebook данных.</p>
+
+<ul>
+<li><em>accounts_id</em> - ID рекламных аккаунтов, перед ID необходимо указать префикс <code>act_</code>, вы можете указать вектор из ID аккаунтов если требуется загрузить данные из набора аккаунтов. По умолчанию запрашивает значение опции <em>rfacebookstat.accounts_id</em>.</li>
+<li><em>sorting</em> - Поле для сортировки полученных данных, так же вы можете указать направление добавив &ldquo;_ascending&rdquo; или &ldquo;_descending&rdquo; в поле сортировки. Например &ldquo;reach_descending&rdquo;. Для действий вы можете сортировать по типу действия в форме &ldquo;actions: <action_type>&rdquo;. Например, [&ldquo;actions: link_click_ascending&rdquo;]. Вы можете задать только одно поле для сортировки.</li>
+<li><em>level</em> - Уровень группировки данных, принимает одно из следующих значений: ad, adset, campaign, account. По умолчанию имеет значение account.</li>
+<li><em>action_breakdowns</em> - Разбивки по действиям, более подробно о них можно узнать в <a href="https://developers.facebook.com/docs/marketing-api/insights/breakdowns#actionsbreakdown">документации</a> к API Facebook, так же более подробно они будут рассмотрены позже в этой виньетке.</li>
+<li><em>breakdowns</em> - Общие разбивки которые предоставляют дополнительные возможности по группировке данных, подробности в <a href="https://developers.facebook.com/docs/marketing-api/insights/breakdowns#ageandgender">документации</a> к API Facebook, так же этот аргумент будет более подробно рассмотрен немного ниже.</li>
+<li><em>fields</em> - Поля которые вы хотите загрузить из API, полный список всех полей доступен по <a href="https://developers.facebook.com/docs/marketing-api/insights/parameters#fields">ссылке</a>.</li>
+<li><em>filtering</em> - Текстовая строка или вектор. Филтрацию отчёта вы можете задавать либо в JSON формате либо в упрощенном формате, более подробно о фильтрации будет написано немного ниже.</li>
+<li><em>date_start</em> - Дата начала отчётного периода.</li>
+<li><em>date_stop</em> - Дата завершения рабочего отчётного периода.</li>
+<li><em>request_speed</em> - Скорость отправки запросов, возможные значения &ldquo;normal&rdquo;, &ldquo;fast&rdquo; или &ldquo;slow&rdquo;. Так же можно задать числовое значение, которое будет задавть количество секунд в паузе между отправкой запросов к API.</li>
+<li><em>api_version</em> - Версия API к которой будет отвравлен запрос, по умолчанию берётся хначение из опции <em>rfacebookstat.api_version</em>.</li>
+<li><em>action_report_time</em> - Допустимые значения: impression, conversion. Определяет отчет о времени действия статистики. Например, если человек видел объявление 1 января, но совершил конверсию 2 января, при запросе API с <code>action_report_time = &quot;impression&quot;</code>, вы увидите конверсию 1 января. Когда вы запросите API с помощью <code>action_report_time = &quot;conversion&quot;</code>, вы увидите преобразование 2 января.</li>
+<li><em>interval</em> - Группировка по временному интервалу, возможные значения: day, week, month, quarter, year.</li>
+<li><em>console_type</em> - Тип выводимых в консоль данных, возможные значения progressbar, message.</li>
+<li><em>access_token</em> - Токен доступа к API полученный с помощью функции <code>fbGetToken</code>, по умолчанию запрашивается значение опции. <em>rfacebookstat.access_token</em></li>
+</ul>
+
+<h2>Пример запроса статистики</h2>
+
+<pre><code class="r">library(rfacebookstat)
+
+options(rfacebookstat.access_token = &quot;ваш токен&quot;,
+        rfacebookstat.accounts_id  = &quot;act_000000000&quot;)
+
+fb_data &lt;- fbGetMarketingStat(
+                  level              = &quot;campaign&quot;,
+                  fields             = &quot;campaign_name,
+                                        impressions,
+                                        clicks,
+                                        spend,
+                                        actions&quot;,
+                  date_start         = &quot;2019-05-01&quot;,
+                  date_stop          = &quot;2019-05-10&quot;)
+</code></pre>
+
+<p>Выше приведён простейший способ загрузки стастистики по показам, кликам, тратам и действиям в разреще дней и рекламных кампаний.
+Использование опций <em>rfacebookstat.access_token</em> и <em>rfacebookstat.accounts_id</em> не является обязательным, но поможет вам избежать дублирование этих параметров в аргументах всех функций пакета, поэтому я рекомендую именно такой способ установки значений accout_id, access_token, business_id и api_version.</p>
+
+<h2>Разбивки (breakdowns)</h2>
+
+<p>Разивки помогают помогают обогощать ваши данные за счёт дополнительных полей и группировок, на данный момент поддерживаются следующие разбивки:</p>
+
+<ul>
+<li>ad_format_asset</li>
+<li>age</li>
+<li>body_asset</li>
+<li>call_to_action_asset</li>
+<li>country</li>
+<li>description_asset</li>
+<li>gender</li>
+<li>image_asset</li>
+<li>impression_device</li>
+<li>link_url_asset</li>
+<li>product_id</li>
+<li>region</li>
+<li>title_asset</li>
+<li>video_asset</li>
+<li>dma</li>
+<li>frequency_value</li>
+<li>hourly_stats_aggregated_by_advertiser_time_zone</li>
+<li>hourly_stats_aggregated_by_audience_time_zone</li>
+<li>place_page_id</li>
+<li>publisher_platform</li>
+<li>platform_position</li>
+<li>device_platform</li>
+</ul>
+
+<p>Актульный список группировок всегда можно найти в официальной документации API Facebook по <a href="https://developers.facebook.com/docs/marketing-api/insights/breakdowns#ageandgender">ссылке</a>.</p>
+
+<pre><code class="r">library(rfacebookstat)
+
+options(rfacebookstat.access_token = &quot;ваш токен&quot;,
+        rfacebookstat.accounts_id  = &quot;act_000000000&quot;)
+
+fb_data_breakdowns &lt;- fbGetMarketingStat(
+  level              = &quot;campaign&quot;,
+  fields             = &quot;campaign_name,
+                        impressions,
+                        clicks,
+                        spend,
+                        actions&quot;,
+  breakdowns         = &quot;region&quot;,
+  date_start         = &quot;2019-05-01&quot;,
+  date_stop          = &quot;2019-05-10&quot;)
+</code></pre>
+
+<h2>Разбивки по действиям (action_breakdowns)</h2>
+
+<p>Вы можете сгруппировать результаты в поле <em>actions</em>. Аргумент <em>action_breakdowns</em> позволяет применить указанные ниже разбивки.</p>
+
+<ul>
+<li>action_device - Устройство, на котором произошло отслеживаемое событие конверсии. Например, «ПК», если человек выполнил конверсию с ПК.</li>
+<li>action_destination - Куда переходят люди, нажав вашу рекламу. Это может быть ваша Страница Facebook, внешний URL-адрес пикселя конверсий или приложение, сконфигурированное с помощью комплекта разработчика ПО.</li>
+<li>action_reaction - Количество реакций на ваши объявления или продвигаемые публикации. Кнопка реакций в рекламе позволяет людям по-разному отреагировать на ее содержание. Можно выбрать &ldquo;Нравится&rdquo;, &ldquo;Супер&rdquo;, &ldquo;Ха-ха&rdquo;, &ldquo;Ух ты!&rdquo;, &ldquo;Сочувствую&rdquo; или &ldquo;Возмутительно&rdquo;.</li>
+<li>action_target_id - Идентификатор места назначения, в которое переходят люди, нажавшие на ссылку в вашей рекламе. Это может быть ваша Страница Facebook, внешний URL вашего пикселя конверсий, или приложение, сконфигурированное с помощью SDK.</li>
+<li>action_type - Тип действий, выполненных в отношении вашей рекламы, Страницы, приложения или мероприятия после показа объявления кому-либо, даже если эти люди не нажимали объявления. Типы действий включают отметки «Нравится» Страницы, установки приложений, конверсии, ответы на мероприятия и т.д.</li>
+</ul>
+
+<pre><code class="r">library(rfacebookstat)
+
+options(rfacebookstat.access_token = &quot;ваш токен&quot;,
+        rfacebookstat.accounts_id  = &quot;act_000000000&quot;)
+
+fb_data_action_breakdowns &lt;- fbGetMarketingStat(
+  level              = &quot;campaign&quot;,
+  fields             = &quot;campaign_name,
+                        impressions,
+                        clicks,
+                        spend,
+                        actions&quot;,
+  action_breakdowns  = &quot;action_reaction&quot;,
+  date_start         = &quot;2019-05-01&quot;,
+  date_stop          = &quot;2019-05-10&quot;)
+</code></pre>
+
+<h3>Описание полей возвращаемых в ращбивке action_type</h3>
+
+<ul>
+<li>app_custom_event.fb_mobile_achievement_unlocked: Разблокированные функции в мобильном приложении</li>
+<li>app_custom_event.fb_mobile_activate_app: Запуски мобильного приложения</li>
+<li>app_custom_event.fb_mobile_add_payment_info: Сведения об оплате в мобильном приложении</li>
+<li>app_custom_event.fb_mobile_add_to_cart: Добавления в корзину в мобильном приложении</li>
+<li>app_custom_event.fb_mobile_add_to_wishlist: Добавления в список желаний в мобильном приложении</li>
+<li>app_custom_event.fb_mobile_complete_registration: Регистрации в мобильном приложении</li>
+<li>app_custom_event.fb_mobile_content_view: Просмотры материалов мобильного приложения</li>
+<li>app_custom_event.fb_mobile_initiated_checkout: Оформление заказов в мобильном приложении</li>
+<li>app_custom_event.fb_mobile_level_achieved: Достижения в мобильном приложении</li>
+<li>app_custom_event.fb_mobile_purchase: Покупки в мобильном приложении</li>
+<li>app_custom_event.fb_mobile_rate: Оценки в мобильном приложении</li>
+<li>app_custom_event.fb_mobile_search: Поисковые запросы в мобильном приложении</li>
+<li>app_custom_event.fb_mobile_spent_credits: Траты кредитов в мобильном приложении</li>
+<li>app_custom_event.fb_mobile_tutorial_completion: Использования обучающей программы в мобильном приложении</li>
+<li>app_custom_event.other: Другие действия в мобильном приложении</li>
+<li>app_install: Установки приложения</li>
+<li>app_use: Использования приложения</li>
+<li>checkin: Посещения</li>
+<li>comment: Комментарии к публикации</li>
+<li>credit_spent: Траты кредитов</li>
+<li>games.plays: Количество раз, когда играли в вашу игру</li>
+<li>landing_page_view: Просмотры целевой страницы</li>
+<li>leadgen.other: Лиды (Форма)</li>
+<li>like: Отметки «Нравится» Страницы</li>
+<li>link_click: Количество кликов на ссылку</li>
+<li>mobile_app_install: Установки мобильного приложения</li>
+<li>offsite_conversion.custom.<custom_conv_id>: Индивидуально настроенные рекламодателем конверсии</li>
+<li>offsite_conversion.fb_pixel_add_payment_info: Добавление платежной информации</li>
+<li>offsite_conversion.fb_pixel_add_to_cart: Добавления товаров в корзину</li>
+<li>offsite_conversion.fb_pixel_add_to_wishlist: Добавления в список пожеланий</li>
+<li>offsite_conversion.fb_pixel_complete_registration: Завершенная регистрация</li>
+<li>offsite_conversion.fb_pixel_custom: Специально настроенные события пикселя, заданные рекламодателем</li>
+<li>offsite_conversion.fb_pixel_initiate_checkout: Инициирует оформление заказа</li>
+<li>offsite_conversion.fb_pixel_lead: Потенциальные клиенты</li>
+<li>offsite_conversion.fb_pixel_purchase: Покупки</li>
+<li>offsite_conversion.fb_pixel_search: Поиск</li>
+<li>offsite_conversion.fb_pixel_view_content: Просматривает контент</li>
+<li>onsite_conversion.flow_complete: Завершенные рабочие процессы на Facebook</li>
+<li>onsite_conversion.messaging_block: Заблокированные переписки</li>
+<li>onsite_conversion.messaging_conversation_started_7d: Начата переписка</li>
+<li>onsite_conversion.messaging_first_reply: Новые переписки</li>
+<li>onsite_conversion.post_save: Сохранения публикации</li>
+<li>onsite_conversion.purchase: Покупки на Facebook</li>
+<li>outbound_click: Исходящие клики</li>
+<li>photo_view: Отметки фотографии Страницы</li>
+<li>post: Репосты публикации</li>
+<li>post_reaction: Реакции на публикацию</li>
+<li>rsvp: Ответы на мероприятие</li>
+<li>video_view: 3-секундные просмотры видео</li>
+</ul>
+
+<h2>Применить одновременно несколько разбивок</h2>
+
+<p>Некоторые разбивки можно применять одновременно.
+Типы группирования, помеченные звездочкой (*), можно объединить с action_type, action_target_id и action_destination (название action_target_id).</p>
+
+<ul>
+<li>action_type *</li>
+<li>action_target_id *</li>
+<li>action_device *</li>
+<li>action_device, impression_device *</li>
+<li>action_device, publisher_platform *</li>
+<li>action_device, publisher_platform, impression_device *</li>
+<li>action_device, publisher_platform, platform_position *</li>
+<li>action_device, publisher_platform, platform_position, impression_device *</li>
+<li>action_reaction</li>
+<li>action_type, action_reaction</li>
+<li>age *</li>
+<li>gender *</li>
+<li>age, gender *</li>
+<li>country *</li>
+<li>region *</li>
+<li>publisher_platform *</li>
+<li>publisher_platform, impression_device *</li>
+<li>publisher_platform, platform_position *</li>
+<li>publisher_platform, platform_position, impression_device *</li>
+<li>product_id *</li>
+</ul>
+
+<h2>Фильтрация данных</h2>
+
+<p>Вы можете применять фильтры к запрашиваемым данным. Использовать для этого необходимо аргумент <code>filtering</code>.
+Указывать выражение для фильтрации ы можете в упрошённом формате или в виде JSON объектов, ниже я приведу пример использования обоих вариантов.</p>
+
+<p>Для фильтрации вам необходимо указать поле по которому вы будете фильтровать данные, оператор и значение.
+Допустимые операторы для фильтрации: EQUAL, NOT_EQUAL, GREATER_THAN, GREATER_THAN_OR_EQUAL, LESS_THAN, LESS_THAN_OR_EQUAL, IN_RANGE, NOT_IN_RANGE, CONTAIN, NOT_CONTAIN, IN, NOT_IN, STARTS_WITH, ANY, ALL, AFTER, BEFORE, NONE</p>
+
+<h3>Пример фильтрации в упрощенном формате</h3>
+
+<pre><code class="r">library(rfacebookstat)
+
+options(rfacebookstat.access_token = &quot;ваш токен&quot;,
+        rfacebookstat.accounts_id  = &quot;act_000000000&quot;)
+fb_data &lt;- fbGetMarketingStat(
+  level              = &quot;campaign&quot;,
+  fields             = &quot;campaign_name,
+                        impressions,
+                        clicks,
+                        spend,
+                        actions&quot;,
+  filtering          = &quot;impressions LESS_THAN 5000&quot;,
+  date_start         = &quot;2019-05-01&quot;,
+  date_stop          = &quot;2019-05-10&quot;)
+</code></pre>
+
+<p>В приведённом примере мы указали фильтр <code>impressions LESS_THAN 5000</code> и таким образом оставили строки в которых поле impressions имеет значение менее 5000.</p>
+
+<p>Если вам необходимо использовать множественный оператор (IN_RANGE, NOT_IN_RANGE, IN, NOT_IN) то в упрошенном формате запись будет выглядеть так: <code>&quot;publisher_platform IN instagram,facebook&quot;</code>. Важно не ставить проблемы между списком значений.</p>
+
+<pre><code class="r">library(rfacebookstat)
+
+options(rfacebookstat.access_token = &quot;ваш токен&quot;,
+        rfacebookstat.accounts_id  = &quot;act_000000000&quot;)
+fb_data &lt;- fbGetMarketingStat(
+  level              = &quot;campaign&quot;,
+  fields             = &quot;campaign_name,
+                        impressions,
+                        clicks,
+                        spend,
+                        actions&quot;,
+  filtering          = &quot;publisher_platform IN instagram,facebook&quot;,
+  breakdowns         = &quot;publisher_platform&quot;,
+  date_start         = &quot;2019-05-01&quot;,
+  date_stop          = &quot;2019-05-10&quot;)
+</code></pre>
+
+<p>Если вы хотите применить несколько фиьтров то вы можете передать в аргумент <code>filtering</code> вектор из выражений, например: <code>c(&quot;clicks LESS_THAN 500&quot;, &quot;impressions GREATER_THAN 1000&quot;)</code>.</p>
+
+<pre><code class="r">library(rfacebookstat)
+
+options(rfacebookstat.access_token = &quot;ваш токен&quot;,
+        rfacebookstat.accounts_id  = &quot;act_000000000&quot;)
+fb_data &lt;- fbGetMarketingStat(
+  level              = &quot;campaign&quot;,
+  fields             = &quot;campaign_name,
+                        impressions,
+                        clicks,
+                        spend,
+                        actions&quot;,
+  filtering          = c(&quot;clicks LESS_THAN 500&quot;, &quot;impressions GREATER_THAN 1000&quot;),
+  date_start         = &quot;2019-05-01&quot;,
+  date_stop          = &quot;2019-05-10&quot;)
+</code></pre>
+
+<h3>Пример фильтрации в JSON формате</h3>
+
+<p>Как я уже писал выше вы можете описывать фильтры в виде JSON объектов, но такая запись будет более громозка. Давайте  приведу вам аналогию с представленными выше фильтрами.</p>
+
+<p>Упрошённый формат: <code>&quot;impressions LESS_THAN 5000&quot;</code></p>
+
+<p>JSON: <code>&quot;[{&quot;field&quot;:&quot;impressions&quot;,&quot;operator&quot;:&quot;LESS_THAN&quot;,&quot;value&quot;:&quot;5000&quot;}]&quot;</code></p>
+
+<hr/>
+
+<p>Упрошённый формат: <code>&quot;publisher_platform IN instagram,facebook&quot;</code></p>
+
+<p>JSON: <code>[{&quot;field&quot;:&quot;publisher_platform&quot;,&quot;operator&quot;:&quot;IN&quot;,&quot;value&quot;:[&quot;instagram&quot;,&quot;facebook&quot;]}]</code></p>
+
+<hr/>
+
+<p>Упрошённый формат: <code>c(&quot;clicks LESS_THAN 500&quot;, &quot;impressions GREATER_THAN 1000&quot;)</code></p>
+
+<p>JSON: <code>[{&quot;field&quot;:&quot;clicks&quot;,&quot;operator&quot;:&quot;LESS_THAN&quot;,&quot;value&quot;:&quot;500&quot;},{&quot;field&quot;:&quot;impressions&quot;,&quot;operator&quot;:&quot;GREATER_THAN&quot;,&quot;value&quot;:&quot;1000&quot;}]</code></p>
+
+<h2>Лимиты API и аргумент request_speed</h2>
+
+<p>По использованию аргумента <code>request_speed</code> есть целая <a href="https://bit.ly/2JS8hon">статья</a>, но я всё же немного опишу зачем данный аргумент нужен.</p>
+
+<p>В API Facebook на данный момент существует 2 уровня доступа к API (<a href="https://developers.facebook.com/docs/marketing-api/access">раздел в справке</a> API Facebook):</p>
+
+<ul>
+<li>Разработка- Тестирование приложений с помощью API.</li>
+<li>Стандартный уровень доступа для управления рекламой - Дополнительные ресурсы, например менее строгие ограничения количества обращений, а также возможность принять участие в программе для партнеров Facebook.</li>
+</ul>
+
+<p>По умолчанию все создаваемые вами приложения получают уровень &ldquo;Разработка&rdquo;. Данный уровень имеет серьёзные ограничения на количество отправляемых в API запросов. Функция <code>fbGetMarketingStat</code> при использовании аргумента <code>interval</code> равным <code>&quot;day&quot;</code> загружает данные по дням, и на каждый день отправляет отделый запрос в API.</p>
+
+<p>Так же отдельно разделяются запросы если вы загружаете данные сразу по несколько аккаунтам, таким образом если вы планируете загрузить даннеы с 1 января по 21 января по 3ём аккаунтам функция отправит (31 * 3) 93 запроса к API.</p>
+
+<p>В случае если вы имеете стандартный доступ то для вас это не будет проблемой и вы можете установить <code>request_speed = &quot;fast&quot;</code>, но для приложений с уровнем доступа &ldquo;Разработка&rdquo; такой объём отправляемых запросов может выйти далеко за лимиты API, от части <code>fbGetMarketingStat</code> умеет обходить такие лимиты каждый раз уходя в бан при их привышении, но скорость загрузки данных при попадает в бан будет очень низкий, иногда бан может составлять 5 минут.</p>
+
+<p>Поэтому если ваше приложение имеет уровень доступа &ldquo;Разработке&rdquo; при загрузке данных по дням за длительный период рекомендуется использовать <code>request_speed = &quot;slow&quot;</code>. Если значениеи &ldquo;slow&rdquo; помогает вы можете самостоятельно задавать паузу в секундах между запросами, например <code>request_speed = 4</code> будет задавать 4 секундую паузу между отправкой запросов.</p>
+
+<p>Для получения стандартного доступа требуется перейти в <a href="https://developers.facebook.com/apps/">ваше приложение</a> в раздел настроек API Marketing и отправить заявку на &ldquo;Ads Management Standart Access&rdquo;.</p>
+
+<p><img src="https://scontent.fiev11-1.fna.fbcdn.net/v/t39.2365-6/34443272_2211780812182292_5001620180766294016_n.png?_nc_cat=103&amp;_nc_ht=scontent.fiev11-1.fna&amp;oh=379c9cf5735395ecc4b1fe8461315672&amp;oe=5D6B775C" alt="Приложение"/></p>
+
+<p><img src="https://scontent.fiev11-1.fna.fbcdn.net/v/t39.2365-6/34715564_167271114122355_8203937888174342144_n.png?_nc_cat=101&amp;_nc_ht=scontent.fiev11-1.fna&amp;oh=1119ca1d6709422a3105a93205729d02&amp;oe=5D684F9B" alt="Приложение"/></p>
+
+</body>
+
+</html>
