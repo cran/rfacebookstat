@@ -1,7 +1,15 @@
-## rfacebookstat 1.9.0
+# rfacebookstat 1.9.1
+
+Исправлена виньетка
+
+# rfacebookstat 1.9.0
+
 Дата релиза: 2019-05-21
+
 CСсылка на подробное описание релиза: [Link](https://github.com/selesnow/rfacebookstat/releases/tag/1.9.0)
-#### Что нового
+
+## Что нового
+
 * Новая функция `fbGetCatalogs` предназначенная для загрузки каталогов;
 * Опции, для упрощения и компактности синтаксиса в пакет добавлены 4 опции
     * rfacebookstat.api_version - Версия API, по умолчанию v3.3

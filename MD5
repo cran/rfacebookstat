@@ -1,6 +1,6 @@
-4aeb16df656881e57d8b9adfe99fb79e *DESCRIPTION
+5edc31da07377e28401413c48db67d16 *DESCRIPTION
 75fe9ee56845f00dae898757dc7f0d27 *NAMESPACE
-669424e9bbddb59323cd08cefb894120 *NEWS.md
+cbbe5d8af62d212c3ea4e56e96f96ad2 *NEWS.md
 19dffd254fb1046de2228fd226c897ba *R/fbAPILimitCheck.R
 9088063994f715544c41e4c166a38e71 *R/fbActions.R
 05d488c37a7b5ebde692409804fcf0cb *R/fbDeleteAdAccountUsers.R
@@ -22,11 +22,11 @@ d2d920fef0e61fdcbe1ffae983c9567c *R/fbGetToken.R
 1a284c473ea12dd2739226c00779cc95 *R/fbUpdateAdAccountUsers.R
 32b306453b9372e4b7debafc700f7a59 *R/zzz.R
 c656ad70897e35fc6532f0f0953b59c5 *README.md
-1f471d34545157494295cda5adef97fa *build/partial.rdb
-e492ae0511e8ab6ce79c0d247317cf19 *build/vignette.rds
+c3befb2460354ebfda88017328809d81 *build/partial.rdb
+27ce966a390eed1ebf038d4a40770766 *build/vignette.rds
 1f8816209b782b30d35e9572057c6c0d *inst/doc/rfacebookstat-get-statistics.R
-f9b2c3efbfdff9dacaa4ab2aa66ab84e *inst/doc/rfacebookstat-get-statistics.Rmd
-4f2daec416a15898183ef06c0a7c2c4e *inst/doc/rfacebookstat-get-statistics.html
+10348fff7b320a651affc506613a4a77 *inst/doc/rfacebookstat-get-statistics.Rmd
+0c50a320b28547804393b94831b0cf08 *inst/doc/rfacebookstat-get-statistics.html
 4c7dd7f137aa699a6bc1ccd6c9db3152 *man/fbDeleteAdAccountUsers.Rd
 590ca4ab2891d65efc014e403ede3c4e *man/fbGetAdAccountUsers.Rd
 5a4e00c4097dda6d13640abc04db4c19 *man/fbGetAdAccountUsersPermissions.Rd
@@ -45,4 +45,4 @@ d8e8653fee5fcfa34212f6ec4c639f85 *man/fbGetPages.Rd
 6470277cdbed39b54a4cd06ab8412f51 *man/fbGetToken.Rd
 f855473703c56408c0413f9d0de0d8c6 *man/fbUpdateAdAccountUsers.Rd
 1b3dcc27fb6ab222d0a28a1f228ece93 *man/rfacebookstat-package.Rd
-f9b2c3efbfdff9dacaa4ab2aa66ab84e *vignettes/rfacebookstat-get-statistics.Rmd
+10348fff7b320a651affc506613a4a77 *vignettes/rfacebookstat-get-statistics.Rmd
