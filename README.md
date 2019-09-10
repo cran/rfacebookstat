@@ -4,7 +4,7 @@
 <a href="https://selesnow.github.io/"><img src="https://alexeyseleznev.files.wordpress.com/2017/03/as.png" height="80"></a>
 </p>
 
-# rfacebookstat
+# rfacebookstat - R пакет для работы с рекламным кабинетом Facebook <a href='https:/selesnow.github.io/rfacebookstat'><img src='https://raw.githubusercontent.com/selesnow/rfacebookstat/master/inst/logo/rfacebookstat.png' align="right" height="139" /></a>
 
 ## CRAN
 
@@ -97,6 +97,11 @@ fbDeleteAdAccountUsers(user_ids = "823041644481205")
 
 ### Виньетки 
 Виньетка посвящённая загрузке статистическим данных из рекламных аккаунтов: `vignette('rfacebookstat-get-statistics', package = 'rfacebookstat')`
+
+### Статьи
+1. [Как загрузить статистику рекламных кампаний из API Facebook с помощью языка R](https://netpeak.net/ru/blog/kak-zagruzit-statistiku-reklamnykh-kampanii-iz-api-facebook-s-pomoshch-yu-yazyka-r/)
+2. [Как загрузить статистику из рекламных систем в Google BigQuery](https://ppc.world/articles/kak-zagruzit-statistiku-iz-reklamnyh-sistem-v-google-bigquery/)
+3. [Импорт данных о расходах в Google Analytics с помощью R](https://analytics-tips.com/import-dannyh-o-raskhodah-v-google-analytics-s-pomoshchyu-r/)
 
 ### Ссылки
 1. [Документация по работе с пакетом rfacebookstat](https://selesnow.github.io/rfacebookstat/).

@@ -1,6 +1,6 @@
-5edc31da07377e28401413c48db67d16 *DESCRIPTION
-75fe9ee56845f00dae898757dc7f0d27 *NAMESPACE
-cbbe5d8af62d212c3ea4e56e96f96ad2 *NEWS.md
+c61cc8f4c873a06ee3a8170898beb56f *DESCRIPTION
+9096db5f90c4272f454874fc6319c970 *NAMESPACE
+22e4c4577ab5ea97710bd0414057d153 *NEWS.md
 19dffd254fb1046de2228fd226c897ba *R/fbAPILimitCheck.R
 9088063994f715544c41e4c166a38e71 *R/fbActions.R
 05d488c37a7b5ebde692409804fcf0cb *R/fbDeleteAdAccountUsers.R
@@ -12,6 +12,7 @@ e8b5ede3418550cd7a891f9d1f6b218b *R/fbGetAdAccountUsersPermissions.R
 1c87701062a60ecc977b3bd4315ce4a6 *R/fbGetAds.R
 a1b19125db9e8606e1461aab74b00911 *R/fbGetApps.R
 4874fa00b5d3d0f3179dd6b80c3e9ec2 *R/fbGetBusinessManagers.R
+299d14ce292dcc8ecd2a9e9c8bf0f654 *R/fbGetBusinessUserAdAccounts.R
 28bf9cf30cc931dbe41fd86340591b7c *R/fbGetCampaigns.R
 9f2854bef83ffb691ef911c5dac370e4 *R/fbGetCatalogs.R
 68d1eaa8d52ee59230c300491c269941 *R/fbGetLongTimeToken.R
@@ -21,12 +22,13 @@ a1b19125db9e8606e1461aab74b00911 *R/fbGetApps.R
 d2d920fef0e61fdcbe1ffae983c9567c *R/fbGetToken.R
 1a284c473ea12dd2739226c00779cc95 *R/fbUpdateAdAccountUsers.R
 32b306453b9372e4b7debafc700f7a59 *R/zzz.R
-c656ad70897e35fc6532f0f0953b59c5 *README.md
-c3befb2460354ebfda88017328809d81 *build/partial.rdb
-27ce966a390eed1ebf038d4a40770766 *build/vignette.rds
+0e255317b05dddd1daed79e30d8ed979 *README.md
+4d6079e8005a9a3cdd4508f390bff679 *build/partial.rdb
+5d1136df36d0ab0b333e142178df43d0 *build/vignette.rds
 1f8816209b782b30d35e9572057c6c0d *inst/doc/rfacebookstat-get-statistics.R
 10348fff7b320a651affc506613a4a77 *inst/doc/rfacebookstat-get-statistics.Rmd
-0c50a320b28547804393b94831b0cf08 *inst/doc/rfacebookstat-get-statistics.html
+bf58775d19129062ded4d564b47f1793 *inst/doc/rfacebookstat-get-statistics.html
+a6d6b8d1942fdb47c3b5cdce7a9c4f33 *inst/logo/rfacebookstat.png
 4c7dd7f137aa699a6bc1ccd6c9db3152 *man/fbDeleteAdAccountUsers.Rd
 590ca4ab2891d65efc014e403ede3c4e *man/fbGetAdAccountUsers.Rd
 5a4e00c4097dda6d13640abc04db4c19 *man/fbGetAdAccountUsersPermissions.Rd
@@ -36,6 +38,7 @@ b289a8775589df796aea91cc177829d3 *man/fbGetAdSets.Rd
 45694a0ea9e68a5abc8cb13f5dd72ef5 *man/fbGetAds.Rd
 5b2a554a02c98d99f5f3617fa992db19 *man/fbGetApps.Rd
 763e3955cdcea8dcf56421d450bc1a46 *man/fbGetBusinessManagers.Rd
+011ccb8c0f471fe2a281649c65a7e18a *man/fbGetBusinessUserAdAccounts.Rd
 3d55ef6c55171bfb65d8768b2f4ab03c *man/fbGetCampaigns.Rd
 e72c7aff850e4a2dedf0965a06d1cce1 *man/fbGetCatalogs.Rd
 6a453e84c24bcde08f7b877e1e0b8c0a *man/fbGetLongTimeToken.Rd
