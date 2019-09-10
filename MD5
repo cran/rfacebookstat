@@ -1,4 +1,4 @@
-c61cc8f4c873a06ee3a8170898beb56f *DESCRIPTION
+28e57edd86e8dbec9164b469ce609335 *DESCRIPTION
 9096db5f90c4272f454874fc6319c970 *NAMESPACE
 22e4c4577ab5ea97710bd0414057d153 *NEWS.md
 19dffd254fb1046de2228fd226c897ba *R/fbAPILimitCheck.R
@@ -21,9 +21,9 @@ a1b19125db9e8606e1461aab74b00911 *R/fbGetApps.R
 8c976366fad92388f8c988abffca1be6 *R/fbGetProjects.R
 d2d920fef0e61fdcbe1ffae983c9567c *R/fbGetToken.R
 1a284c473ea12dd2739226c00779cc95 *R/fbUpdateAdAccountUsers.R
-32b306453b9372e4b7debafc700f7a59 *R/zzz.R
+5ea4575f428e243d88516d2d33ae0cc5 *R/zzz.R
 0e255317b05dddd1daed79e30d8ed979 *README.md
-4d6079e8005a9a3cdd4508f390bff679 *build/partial.rdb
+b225f44cd6908fba44f482012e289571 *build/partial.rdb
 5d1136df36d0ab0b333e142178df43d0 *build/vignette.rds
 1f8816209b782b30d35e9572057c6c0d *inst/doc/rfacebookstat-get-statistics.R
 10348fff7b320a651affc506613a4a77 *inst/doc/rfacebookstat-get-statistics.Rmd

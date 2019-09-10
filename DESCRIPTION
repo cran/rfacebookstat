@@ -1,7 +1,7 @@
 Package: rfacebookstat
 Type: Package
 Title: Load Data from Facebook API Marketing
-Version: 1.10.0
+Version: 1.10.1
 Date: 2019-09-10
 Author: Alexey Seleznev <selesnow@gmail.com>
 Maintainer: Alexey Seleznev <selesnow@gmail.com>
@@ -19,6 +19,6 @@ VignetteBuilder: knitr
 Encoding: UTF-8
 Language: ru
 NeedsCompilation: no
-Packaged: 2019-09-10 09:24:36 UTC; Alsey
+Packaged: 2019-09-10 10:16:47 UTC; Alsey
 Repository: CRAN
-Date/Publication: 2019-09-10 09:50:02 UTC
+Date/Publication: 2019-09-10 22:50:02 UTC
