@@ -5,14 +5,18 @@
 \usage{
 fbGetBusinessUserAdAccounts(
      business_users_id = NULL, 
-     business_id = getOption("rfacebookstat.business_id"), 
-     api_version = getOption("rfacebookstat.api_version"), 
-     access_token = getOption("rfacebookstat.access_token"))
+     business_id       = getOption("rfacebookstat.business_id"), 
+     api_version       = getOption("rfacebookstat.api_version"), 
+	 username          = getOption("rfacebookstat.username"),
+     token_path        = fbTokenPath(),
+     access_token      = getOption("rfacebookstat.access_token"))
 }
 
 \arguments{
   \item{business_users_id}{ID by business manager user.}
   \item{business_id}{ID by your Business Manager}
+  \item{username}{your username on Facebook}
+  \item{token_path}{path to dir with credentials}
   \item{access_token}{Your facebook API token.}
   \item{api_version}{Current Facebook API version.}
 }

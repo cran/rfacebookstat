@@ -1,11 +1,11 @@
-## ----setup, include = FALSE----------------------------------------------
+## ----setup, include = FALSE---------------------------------------------------
 knitr::opts_chunk$set(
   eval=FALSE,
   collapse = TRUE,
   comment = "#>"
 )
 
-## ------------------------------------------------------------------------
+## -----------------------------------------------------------------------------
 #  library(rfacebookstat)
 #  
 #  options(rfacebookstat.access_token = "ваш токен",
@@ -21,7 +21,7 @@ knitr::opts_chunk$set(
 #                    date_start         = "2019-05-01",
 #                    date_stop          = "2019-05-10")
 
-## ------------------------------------------------------------------------
+## -----------------------------------------------------------------------------
 #  library(rfacebookstat)
 #  
 #  options(rfacebookstat.access_token = "ваш токен",
@@ -38,7 +38,7 @@ knitr::opts_chunk$set(
 #    date_start         = "2019-05-01",
 #    date_stop          = "2019-05-10")
 
-## ------------------------------------------------------------------------
+## -----------------------------------------------------------------------------
 #  library(rfacebookstat)
 #  
 #  options(rfacebookstat.access_token = "ваш токен",
@@ -55,7 +55,25 @@ knitr::opts_chunk$set(
 #    date_start         = "2019-05-01",
 #    date_stop          = "2019-05-10")
 
-## ------------------------------------------------------------------------
+## -----------------------------------------------------------------------------
+#  library(rfacebookstat)
+#  
+#  options(rfacebookstat.access_token = "ваш токен",
+#          rfacebookstat.accounts_id  = "act_000000000")
+#  
+#  fb_data_action_breakdowns <- fbGetMarketingStat(
+#    level              = "campaign",
+#    fields             = "campaign_name,
+#                          impressions,
+#                          clicks,
+#                          spend,
+#                          actions",
+#    action_breakdowns  = "action_reaction",
+#    attribution_window = c('default', '1d_view', '28d_view', '28d_click'),
+#    date_start         = "2019-05-01",
+#    date_stop          = "2019-05-10")
+
+## -----------------------------------------------------------------------------
 #  library(rfacebookstat)
 #  
 #  options(rfacebookstat.access_token = "ваш токен",
@@ -71,7 +89,7 @@ knitr::opts_chunk$set(
 #    date_start         = "2019-05-01",
 #    date_stop          = "2019-05-10")
 
-## ------------------------------------------------------------------------
+## -----------------------------------------------------------------------------
 #  library(rfacebookstat)
 #  
 #  options(rfacebookstat.access_token = "ваш токен",
@@ -88,7 +106,7 @@ knitr::opts_chunk$set(
 #    date_start         = "2019-05-01",
 #    date_stop          = "2019-05-10")
 
-## ------------------------------------------------------------------------
+## -----------------------------------------------------------------------------
 #  library(rfacebookstat)
 #  
 #  options(rfacebookstat.access_token = "ваш токен",

@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
 
 <head>
 
 <meta charset="utf-8" />
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <meta name="author" content="Алексей Селезнёв" />
 
-<meta name="date" content="2019-09-10" />
+<meta name="date" content="2019-12-17" />
 
 <title>Загрузки статистики из рекламных аккаунтов Facebook</title>
 
@@ -37,7 +37,7 @@ a.sourceLine { text-indent: -1em; padding-left: 1em; }
 pre.numberSource a.sourceLine
   { position: relative; left: -4em; }
 pre.numberSource a.sourceLine::before
-  { content: attr(title);
+  { content: attr(data-line-number);
     position: relative; left: -1em; text-align: right; vertical-align: baseline;
     border: none; pointer-events: all; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
@@ -96,7 +96,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") continue;
       var style = rule.style.cssText;
       // check if color or background-color is set
-      if (rule.style.color === '' || rule.style.backgroundColor === '') continue;
+      if (rule.style.color === '' && rule.style.backgroundColor === '') continue;
       // replace div.sourceCode by a pre.sourceCode rule
       sheets[i].deleteRule(j);
       sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
@@ -303,12 +303,12 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 
 <h1 class="title toc-ignore">Загрузки статистики из рекламных аккаунтов Facebook</h1>
 <h4 class="author">Алексей Селезнёв</h4>
-<h4 class="date">2019-09-10</h4>
+<h4 class="date">2019-12-17</h4>
 
 
 
 <p>Для загрузки статистических данных из рекламных аккаунтов Facebook в пакете <code>rfacebookstat</code> необходимо использовать функцию <code>fbGetMarketingStat</code>.</p>
-<div id="fbgetmarketingstat" class="section level2">
+<div id="аргументы-функции-fbgetmarketingstat" class="section level2">
 <h2>Аргументы функции <code>fbGetMarketingStat</code></h2>
 <p>Функция имеет множество аргументов с помощью которых вы можете максимально точно обозначить формат получаемых из API Facebook данных.</p>
 <ul>
@@ -318,38 +318,46 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 <li><em>action_breakdowns</em> - Разбивки по действиям, более подробно о них можно узнать в <a href="https://developers.facebook.com/docs/marketing-api/insights/breakdowns#actionsbreakdown">документации</a> к API Facebook, так же более подробно они будут рассмотрены позже в этой виньетке.</li>
 <li><em>breakdowns</em> - Общие разбивки которые предоставляют дополнительные возможности по группировке данных, подробности в <a href="https://developers.facebook.com/docs/marketing-api/insights/breakdowns#ageandgender">документации</a> к API Facebook, так же этот аргумент будет более подробно рассмотрен немного ниже.</li>
 <li><em>fields</em> - Поля которые вы хотите загрузить из API, полный список всех полей доступен по <a href="https://developers.facebook.com/docs/marketing-api/insights/parameters#fields">ссылке</a>.</li>
-<li><em>filtering</em> - Текстовая строка или вектор. Филтрацию отчёта вы можете задавать либо в JSON формате либо в упрощенном формате, более подробно о фильтрации будет написано немного ниже.</li>
+<li><em>filtering</em> - Текстовая строка или вектор. Фильтрацию отчёта вы можете задавать либо в JSON формате либо в упрощенном формате, более подробно о фильтрации будет написано немного ниже.</li>
 <li><em>date_start</em> - Дата начала отчётного периода.</li>
 <li><em>date_stop</em> - Дата завершения рабочего отчётного периода.</li>
-<li><em>request_speed</em> - Скорость отправки запросов, возможные значения “normal”, “fast” или “slow”. Так же можно задать числовое значение, которое будет задавть количество секунд в паузе между отправкой запросов к API.</li>
-<li><em>api_version</em> - Версия API к которой будет отвравлен запрос, по умолчанию берётся хначение из опции <em>rfacebookstat.api_version</em>.</li>
+<li><em>request_speed</em> - Скорость отправки запросов, возможные значения “normal”, “fast” или “slow”. Так же можно задать числовое значение, которое будет задавать количество секунд в паузе между отправкой запросов к API.</li>
+<li><em>api_version</em> - Версия API к которой будет отправлен запрос, по умолчанию берётся значение из опции <em>rfacebookstat.api_version</em>.</li>
 <li><em>action_report_time</em> - Допустимые значения: impression, conversion. Определяет отчет о времени действия статистики. Например, если человек видел объявление 1 января, но совершил конверсию 2 января, при запросе API с <code>action_report_time = &quot;impression&quot;</code>, вы увидите конверсию 1 января. Когда вы запросите API с помощью <code>action_report_time = &quot;conversion&quot;</code>, вы увидите преобразование 2 января.</li>
+<li><em>attribution_window</em> - Окна атрибуции</li>
 <li><em>interval</em> - Группировка по временному интервалу, возможные значения: day, week, month, quarter, year.</li>
 <li><em>console_type</em> - Тип выводимых в консоль данных, возможные значения progressbar, message.</li>
+<li><em>username</em> - Логин на Facebook под которым вы проходили авторизацию, используется для хранения учётных данных для работы с API.</li>
+<li><em>token_path</em> - Путь к папке в которой хранится файл с учётными данными на Facebook, которые вы получили при авторизации.</li>
 <li><em>access_token</em> - Токен доступа к API полученный с помощью функции <code>fbGetToken</code>, по умолчанию запрашивается значение опции. <em>rfacebookstat.access_token</em></li>
 </ul>
 </div>
-<div id="section" class="section level2">
+<div id="пример-запроса-статистики" class="section level2">
 <h2>Пример запроса статистики</h2>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" title="1"><span class="kw">library</span>(rfacebookstat)</a>
-<a class="sourceLine" id="cb1-2" title="2"></a>
-<a class="sourceLine" id="cb1-3" title="3"><span class="kw">options</span>(<span class="dt">rfacebookstat.access_token =</span> <span class="st">&quot;ваш токен&quot;</span>,</a>
-<a class="sourceLine" id="cb1-4" title="4">        <span class="dt">rfacebookstat.accounts_id  =</span> <span class="st">&quot;act_000000000&quot;</span>)</a>
-<a class="sourceLine" id="cb1-5" title="5"></a>
-<a class="sourceLine" id="cb1-6" title="6">fb_data &lt;-<span class="st"> </span><span class="kw">fbGetMarketingStat</span>(</a>
-<a class="sourceLine" id="cb1-7" title="7">                  <span class="dt">level              =</span> <span class="st">&quot;campaign&quot;</span>,</a>
-<a class="sourceLine" id="cb1-8" title="8">                  <span class="dt">fields             =</span> <span class="st">&quot;campaign_name,</span></a>
-<a class="sourceLine" id="cb1-9" title="9"><span class="st">                                        impressions,</span></a>
-<a class="sourceLine" id="cb1-10" title="10"><span class="st">                                        clicks,</span></a>
-<a class="sourceLine" id="cb1-11" title="11"><span class="st">                                        spend,</span></a>
-<a class="sourceLine" id="cb1-12" title="12"><span class="st">                                        actions&quot;</span>,</a>
-<a class="sourceLine" id="cb1-13" title="13">                  <span class="dt">date_start         =</span> <span class="st">&quot;2019-05-01&quot;</span>,</a>
-<a class="sourceLine" id="cb1-14" title="14">                  <span class="dt">date_stop          =</span> <span class="st">&quot;2019-05-10&quot;</span>)</a></code></pre></div>
-<p>Выше приведён простейший способ загрузки стастистики по показам, кликам, тратам и действиям в разреще дней и рекламных кампаний. Использование опций <em>rfacebookstat.access_token</em> и <em>rfacebookstat.accounts_id</em> не является обязательным, но поможет вам избежать дублирование этих параметров в аргументах всех функций пакета, поэтому я рекомендую именно такой способ установки значений accout_id, access_token, business_id и api_version.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw">library</span>(rfacebookstat)</a>
+<a class="sourceLine" id="cb1-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb1-3" data-line-number="3"><span class="kw">options</span>(<span class="dt">rfacebookstat.access_token =</span> <span class="st">&quot;ваш токен&quot;</span>,</a>
+<a class="sourceLine" id="cb1-4" data-line-number="4">        <span class="dt">rfacebookstat.accounts_id  =</span> <span class="st">&quot;act_000000000&quot;</span>)</a>
+<a class="sourceLine" id="cb1-5" data-line-number="5"></a>
+<a class="sourceLine" id="cb1-6" data-line-number="6">fb_data &lt;-<span class="st"> </span><span class="kw">fbGetMarketingStat</span>(</a>
+<a class="sourceLine" id="cb1-7" data-line-number="7">                  <span class="dt">level              =</span> <span class="st">&quot;campaign&quot;</span>,</a>
+<a class="sourceLine" id="cb1-8" data-line-number="8">                  <span class="dt">fields             =</span> <span class="st">&quot;campaign_name,</span></a>
+<a class="sourceLine" id="cb1-9" data-line-number="9"><span class="st">                                        impressions,</span></a>
+<a class="sourceLine" id="cb1-10" data-line-number="10"><span class="st">                                        clicks,</span></a>
+<a class="sourceLine" id="cb1-11" data-line-number="11"><span class="st">                                        spend,</span></a>
+<a class="sourceLine" id="cb1-12" data-line-number="12"><span class="st">                                        actions&quot;</span>,</a>
+<a class="sourceLine" id="cb1-13" data-line-number="13">                  <span class="dt">date_start         =</span> <span class="st">&quot;2019-05-01&quot;</span>,</a>
+<a class="sourceLine" id="cb1-14" data-line-number="14">                  <span class="dt">date_stop          =</span> <span class="st">&quot;2019-05-10&quot;</span>)</a></code></pre></div>
+<p>Выше приведён простейший способ загрузки статистики по показам, кликам, тратам и действиям в разрезе дней и рекламных кампаний. Использование опций <em>rfacebookstat.access_token</em> и <em>rfacebookstat.accounts_id</em> не является обязательным, но поможет вам избежать дублирования этих параметров в аргументах всех функций пакета, поэтому я рекомендую именно такой способ установки значений accout_id, access_token, business_id и api_version.</p>
 </div>
-<div id="breakdowns" class="section level2">
+<div id="учётные-данные" class="section level2">
+<h2>Учётные данные</h2>
+<p>С помощью аргументов <em>username</em> и <em>token_path</em> функция <code>fbGetMarketingStat()</code> определяет какие учётные данные ей необходимо использовать для запроса данных, и где эти учётные данные хранятся.</p>
+<p>Более подробно об авторизации и этих аргументах написано в виньетке про авторизацию, открыть можно с помощью функции <code>vignette('rfacebookstat-authorization', package = 'rfacebookstat')</code>.</p>
+</div>
+<div id="разбивки-breakdowns" class="section level2">
 <h2>Разбивки (breakdowns)</h2>
-<p>Разивки помогают помогают обогощать ваши данные за счёт дополнительных полей и группировок, на данный момент поддерживаются следующие разбивки:</p>
+<p>Разбивки помогают обогащать ваши данные за счёт дополнительных полей и группировок, на данный момент поддерживаются следующие разбивки:</p>
 <ul>
 <li>ad_format_asset</li>
 <li>age</li>
@@ -374,24 +382,24 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 <li>platform_position</li>
 <li>device_platform</li>
 </ul>
-<p>Актульный список группировок всегда можно найти в официальной документации API Facebook по <a href="https://developers.facebook.com/docs/marketing-api/insights/breakdowns#ageandgender">ссылке</a>.</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" title="1"><span class="kw">library</span>(rfacebookstat)</a>
-<a class="sourceLine" id="cb2-2" title="2"></a>
-<a class="sourceLine" id="cb2-3" title="3"><span class="kw">options</span>(<span class="dt">rfacebookstat.access_token =</span> <span class="st">&quot;ваш токен&quot;</span>,</a>
-<a class="sourceLine" id="cb2-4" title="4">        <span class="dt">rfacebookstat.accounts_id  =</span> <span class="st">&quot;act_000000000&quot;</span>)</a>
-<a class="sourceLine" id="cb2-5" title="5"></a>
-<a class="sourceLine" id="cb2-6" title="6">fb_data_breakdowns &lt;-<span class="st"> </span><span class="kw">fbGetMarketingStat</span>(</a>
-<a class="sourceLine" id="cb2-7" title="7">  <span class="dt">level              =</span> <span class="st">&quot;campaign&quot;</span>,</a>
-<a class="sourceLine" id="cb2-8" title="8">  <span class="dt">fields             =</span> <span class="st">&quot;campaign_name,</span></a>
-<a class="sourceLine" id="cb2-9" title="9"><span class="st">                        impressions,</span></a>
-<a class="sourceLine" id="cb2-10" title="10"><span class="st">                        clicks,</span></a>
-<a class="sourceLine" id="cb2-11" title="11"><span class="st">                        spend,</span></a>
-<a class="sourceLine" id="cb2-12" title="12"><span class="st">                        actions&quot;</span>,</a>
-<a class="sourceLine" id="cb2-13" title="13">  <span class="dt">breakdowns         =</span> <span class="st">&quot;region&quot;</span>,</a>
-<a class="sourceLine" id="cb2-14" title="14">  <span class="dt">date_start         =</span> <span class="st">&quot;2019-05-01&quot;</span>,</a>
-<a class="sourceLine" id="cb2-15" title="15">  <span class="dt">date_stop          =</span> <span class="st">&quot;2019-05-10&quot;</span>)</a></code></pre></div>
+<p>Актуальный список группировок всегда можно найти в официальной документации API Facebook по <a href="https://developers.facebook.com/docs/marketing-api/insights/breakdowns#ageandgender">ссылке</a>.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="kw">library</span>(rfacebookstat)</a>
+<a class="sourceLine" id="cb2-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb2-3" data-line-number="3"><span class="kw">options</span>(<span class="dt">rfacebookstat.access_token =</span> <span class="st">&quot;ваш токен&quot;</span>,</a>
+<a class="sourceLine" id="cb2-4" data-line-number="4">        <span class="dt">rfacebookstat.accounts_id  =</span> <span class="st">&quot;act_000000000&quot;</span>)</a>
+<a class="sourceLine" id="cb2-5" data-line-number="5"></a>
+<a class="sourceLine" id="cb2-6" data-line-number="6">fb_data_breakdowns &lt;-<span class="st"> </span><span class="kw">fbGetMarketingStat</span>(</a>
+<a class="sourceLine" id="cb2-7" data-line-number="7">  <span class="dt">level              =</span> <span class="st">&quot;campaign&quot;</span>,</a>
+<a class="sourceLine" id="cb2-8" data-line-number="8">  <span class="dt">fields             =</span> <span class="st">&quot;campaign_name,</span></a>
+<a class="sourceLine" id="cb2-9" data-line-number="9"><span class="st">                        impressions,</span></a>
+<a class="sourceLine" id="cb2-10" data-line-number="10"><span class="st">                        clicks,</span></a>
+<a class="sourceLine" id="cb2-11" data-line-number="11"><span class="st">                        spend,</span></a>
+<a class="sourceLine" id="cb2-12" data-line-number="12"><span class="st">                        actions&quot;</span>,</a>
+<a class="sourceLine" id="cb2-13" data-line-number="13">  <span class="dt">breakdowns         =</span> <span class="st">&quot;region&quot;</span>,</a>
+<a class="sourceLine" id="cb2-14" data-line-number="14">  <span class="dt">date_start         =</span> <span class="st">&quot;2019-05-01&quot;</span>,</a>
+<a class="sourceLine" id="cb2-15" data-line-number="15">  <span class="dt">date_stop          =</span> <span class="st">&quot;2019-05-10&quot;</span>)</a></code></pre></div>
 </div>
-<div id="action_breakdowns" class="section level2">
+<div id="разбивки-по-действиям-action_breakdowns" class="section level2">
 <h2>Разбивки по действиям (action_breakdowns)</h2>
 <p>Вы можете сгруппировать результаты в поле <em>actions</em>. Аргумент <em>action_breakdowns</em> позволяет применить указанные ниже разбивки.</p>
 <ul>
@@ -401,23 +409,23 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 <li>action_target_id - Идентификатор места назначения, в которое переходят люди, нажавшие на ссылку в вашей рекламе. Это может быть ваша Страница Facebook, внешний URL вашего пикселя конверсий, или приложение, сконфигурированное с помощью SDK.</li>
 <li>action_type - Тип действий, выполненных в отношении вашей рекламы, Страницы, приложения или мероприятия после показа объявления кому-либо, даже если эти люди не нажимали объявления. Типы действий включают отметки «Нравится» Страницы, установки приложений, конверсии, ответы на мероприятия и т.д.</li>
 </ul>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" title="1"><span class="kw">library</span>(rfacebookstat)</a>
-<a class="sourceLine" id="cb3-2" title="2"></a>
-<a class="sourceLine" id="cb3-3" title="3"><span class="kw">options</span>(<span class="dt">rfacebookstat.access_token =</span> <span class="st">&quot;ваш токен&quot;</span>,</a>
-<a class="sourceLine" id="cb3-4" title="4">        <span class="dt">rfacebookstat.accounts_id  =</span> <span class="st">&quot;act_000000000&quot;</span>)</a>
-<a class="sourceLine" id="cb3-5" title="5"></a>
-<a class="sourceLine" id="cb3-6" title="6">fb_data_action_breakdowns &lt;-<span class="st"> </span><span class="kw">fbGetMarketingStat</span>(</a>
-<a class="sourceLine" id="cb3-7" title="7">  <span class="dt">level              =</span> <span class="st">&quot;campaign&quot;</span>,</a>
-<a class="sourceLine" id="cb3-8" title="8">  <span class="dt">fields             =</span> <span class="st">&quot;campaign_name,</span></a>
-<a class="sourceLine" id="cb3-9" title="9"><span class="st">                        impressions,</span></a>
-<a class="sourceLine" id="cb3-10" title="10"><span class="st">                        clicks,</span></a>
-<a class="sourceLine" id="cb3-11" title="11"><span class="st">                        spend,</span></a>
-<a class="sourceLine" id="cb3-12" title="12"><span class="st">                        actions&quot;</span>,</a>
-<a class="sourceLine" id="cb3-13" title="13">  <span class="dt">action_breakdowns  =</span> <span class="st">&quot;action_reaction&quot;</span>,</a>
-<a class="sourceLine" id="cb3-14" title="14">  <span class="dt">date_start         =</span> <span class="st">&quot;2019-05-01&quot;</span>,</a>
-<a class="sourceLine" id="cb3-15" title="15">  <span class="dt">date_stop          =</span> <span class="st">&quot;2019-05-10&quot;</span>)</a></code></pre></div>
-<div id="action_type" class="section level3">
-<h3>Описание полей возвращаемых в ращбивке action_type</h3>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="kw">library</span>(rfacebookstat)</a>
+<a class="sourceLine" id="cb3-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb3-3" data-line-number="3"><span class="kw">options</span>(<span class="dt">rfacebookstat.access_token =</span> <span class="st">&quot;ваш токен&quot;</span>,</a>
+<a class="sourceLine" id="cb3-4" data-line-number="4">        <span class="dt">rfacebookstat.accounts_id  =</span> <span class="st">&quot;act_000000000&quot;</span>)</a>
+<a class="sourceLine" id="cb3-5" data-line-number="5"></a>
+<a class="sourceLine" id="cb3-6" data-line-number="6">fb_data_action_breakdowns &lt;-<span class="st"> </span><span class="kw">fbGetMarketingStat</span>(</a>
+<a class="sourceLine" id="cb3-7" data-line-number="7">  <span class="dt">level              =</span> <span class="st">&quot;campaign&quot;</span>,</a>
+<a class="sourceLine" id="cb3-8" data-line-number="8">  <span class="dt">fields             =</span> <span class="st">&quot;campaign_name,</span></a>
+<a class="sourceLine" id="cb3-9" data-line-number="9"><span class="st">                        impressions,</span></a>
+<a class="sourceLine" id="cb3-10" data-line-number="10"><span class="st">                        clicks,</span></a>
+<a class="sourceLine" id="cb3-11" data-line-number="11"><span class="st">                        spend,</span></a>
+<a class="sourceLine" id="cb3-12" data-line-number="12"><span class="st">                        actions&quot;</span>,</a>
+<a class="sourceLine" id="cb3-13" data-line-number="13">  <span class="dt">action_breakdowns  =</span> <span class="st">&quot;action_reaction&quot;</span>,</a>
+<a class="sourceLine" id="cb3-14" data-line-number="14">  <span class="dt">date_start         =</span> <span class="st">&quot;2019-05-01&quot;</span>,</a>
+<a class="sourceLine" id="cb3-15" data-line-number="15">  <span class="dt">date_stop          =</span> <span class="st">&quot;2019-05-10&quot;</span>)</a></code></pre></div>
+<div id="описание-полей-возвращаемых-в-разбивке-action_type" class="section level3">
+<h3>Описание полей возвращаемых в разбивке action_type</h3>
 <ul>
 <li>app_custom_event.fb_mobile_achievement_unlocked: Разблокированные функции в мобильном приложении</li>
 <li>app_custom_event.fb_mobile_activate_app: Запуски мобильного приложения</li>
@@ -471,7 +479,7 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 </ul>
 </div>
 </div>
-<div id="section-1" class="section level2">
+<div id="применить-одновременно-несколько-разбивок" class="section level2">
 <h2>Применить одновременно несколько разбивок</h2>
 <p>Некоторые разбивки можно применять одновременно. Типы группирования, помеченные звездочкой (*), можно объединить с action_type, action_target_id и action_destination (название action_target_id).</p>
 <ul>
@@ -497,84 +505,123 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 <li>product_id *</li>
 </ul>
 </div>
-<div id="section-2" class="section level2">
+<div id="окна-атрибуции" class="section level2">
+<h2>Окна атрибуции</h2>
+<p>Количество дней между просмотром или нажатием рекламы и выполнением действия называется окном атрибуции. В функции <code>fbGetMarketingStat()</code> управление окнами атрибуции осуществляется с помощью аргумента <em>attribution_window</em>.</p>
+<p>Действия с рекламой измеряются на основании кликов и просмотров:</p>
+<ul>
+<li>Атрибуция по кликам: человек нажал рекламу и выполнил действие.</li>
+<li>Атрибуция по просмотрам: человек посмотрел рекламу, не нажал ее, но выполнил действие в пределах окна атрибуции.</li>
+</ul>
+<p>По умолчанию окно атрибуции настроено на 1 день после просмотра и 28 дней после клика. Это означает, что вы видите действия, которые произошли в течение 1 дня после просмотра рекламы и в течение 28 дней после ее нажатия. Вы можете изменить окно атрибуции на 1, 7 или 28 дней после просмотра или нажатия рекламы.</p>
+<p>Чтобы посмотреть все действия, связанные с рекламой, вы можете настроить атрибуцию как после просмотра, так и после клика на один и тот же период времени.</p>
+<p>Например, чтобы узнать, сколько покупок было совершено после просмотра или клика по рекламе за последние 7 дней, выберите для окон атрибуции по просмотрам и кликам продолжительность <code>attribution_window = c(&quot;7d_view&quot;, &quot;7d_click&quot;)</code>.</p>
+<p>Аргумент <em>attribution_window</em> принимает вектор состоящий из окон атрибуции по которым вы хотите получить данные, при этом значение поля по каждой модели атрибуции которое вы получаете в массиве <em>actions</em> будет выделено в отдельный столбец. Например если вы применяете атрибуции <em>7d_view</em> и <em>7d_click</em> то поле <em>lead</em> будет представлено в трёх столбцах: <em>lead</em>, <em>lead_7d_view</em>, <em>lead_7d_click</em>.</p>
+<p>Возможные модели атрибуции: account_default, default, inline, 1d_view, 7d_view, 28d_view, 1d_click, 7d_click, 28d_click, 1d_view_1d_click, 7d_view_1d_click, 28d_view_1d_click, 28d_view_7d_click, 7d_view_7d_click, 28d_view_7d_click, 7d_view_28d_click, 28d_view_28d_click.</p>
+<div id="пример-использования-окон-атрибуции" class="section level3">
+<h3>Пример использования окон атрибуции</h3>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="kw">library</span>(rfacebookstat)</a>
+<a class="sourceLine" id="cb4-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb4-3" data-line-number="3"><span class="kw">options</span>(<span class="dt">rfacebookstat.access_token =</span> <span class="st">&quot;ваш токен&quot;</span>,</a>
+<a class="sourceLine" id="cb4-4" data-line-number="4">        <span class="dt">rfacebookstat.accounts_id  =</span> <span class="st">&quot;act_000000000&quot;</span>)</a>
+<a class="sourceLine" id="cb4-5" data-line-number="5"></a>
+<a class="sourceLine" id="cb4-6" data-line-number="6">fb_data_action_breakdowns &lt;-<span class="st"> </span><span class="kw">fbGetMarketingStat</span>(</a>
+<a class="sourceLine" id="cb4-7" data-line-number="7">  <span class="dt">level              =</span> <span class="st">&quot;campaign&quot;</span>,</a>
+<a class="sourceLine" id="cb4-8" data-line-number="8">  <span class="dt">fields             =</span> <span class="st">&quot;campaign_name,</span></a>
+<a class="sourceLine" id="cb4-9" data-line-number="9"><span class="st">                        impressions,</span></a>
+<a class="sourceLine" id="cb4-10" data-line-number="10"><span class="st">                        clicks,</span></a>
+<a class="sourceLine" id="cb4-11" data-line-number="11"><span class="st">                        spend,</span></a>
+<a class="sourceLine" id="cb4-12" data-line-number="12"><span class="st">                        actions&quot;</span>,</a>
+<a class="sourceLine" id="cb4-13" data-line-number="13">  <span class="dt">action_breakdowns  =</span> <span class="st">&quot;action_reaction&quot;</span>,</a>
+<a class="sourceLine" id="cb4-14" data-line-number="14">  <span class="dt">attribution_window =</span> <span class="kw">c</span>(<span class="st">'default'</span>, <span class="st">'1d_view'</span>, <span class="st">'28d_view'</span>, <span class="st">'28d_click'</span>),</a>
+<a class="sourceLine" id="cb4-15" data-line-number="15">  <span class="dt">date_start         =</span> <span class="st">&quot;2019-05-01&quot;</span>,</a>
+<a class="sourceLine" id="cb4-16" data-line-number="16">  <span class="dt">date_stop          =</span> <span class="st">&quot;2019-05-10&quot;</span>)</a></code></pre></div>
+<p>Более подробно об окнах атрибуции в Facebook можно узнать по следующим ссылкам:</p>
+<ul>
+<li><a href="https://www.facebook.com/business/help/2198119873776795?id=768381033531365">Об окнах атрибуции в Ads Manager</a></li>
+<li><a href="https://developers.facebook.com/docs/marketing-api/insights/#sample">API Insights / Статистика / Окна атрибуции</a></li>
+<li><a href="https://developers.facebook.com/docs/marketing-api/ad-rules-getting-started/">Система правил для рекламы</a></li>
+</ul>
+</div>
+</div>
+<div id="фильтрация-данных" class="section level2">
 <h2>Фильтрация данных</h2>
-<p>Вы можете применять фильтры к запрашиваемым данным. Использовать для этого необходимо аргумент <code>filtering</code>. Указывать выражение для фильтрации ы можете в упрошённом формате или в виде JSON объектов, ниже я приведу пример использования обоих вариантов.</p>
+<p>Вы можете применять фильтры к запрашиваемым данным. Использовать для этого необходимо аргумент <code>filtering</code>. Указывать выражение для фильтрации ы можете в упрощённом формате или в виде JSON объектов, ниже я приведу пример использования обоих вариантов.</p>
 <p>Для фильтрации вам необходимо указать поле по которому вы будете фильтровать данные, оператор и значение. Допустимые операторы для фильтрации: EQUAL, NOT_EQUAL, GREATER_THAN, GREATER_THAN_OR_EQUAL, LESS_THAN, LESS_THAN_OR_EQUAL, IN_RANGE, NOT_IN_RANGE, CONTAIN, NOT_CONTAIN, IN, NOT_IN, STARTS_WITH, ANY, ALL, AFTER, BEFORE, NONE</p>
-<div id="section-3" class="section level3">
+<div id="пример-фильтрации-в-упрощенном-формате" class="section level3">
 <h3>Пример фильтрации в упрощенном формате</h3>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" title="1"><span class="kw">library</span>(rfacebookstat)</a>
-<a class="sourceLine" id="cb4-2" title="2"></a>
-<a class="sourceLine" id="cb4-3" title="3"><span class="kw">options</span>(<span class="dt">rfacebookstat.access_token =</span> <span class="st">&quot;ваш токен&quot;</span>,</a>
-<a class="sourceLine" id="cb4-4" title="4">        <span class="dt">rfacebookstat.accounts_id  =</span> <span class="st">&quot;act_000000000&quot;</span>)</a>
-<a class="sourceLine" id="cb4-5" title="5">fb_data &lt;-<span class="st"> </span><span class="kw">fbGetMarketingStat</span>(</a>
-<a class="sourceLine" id="cb4-6" title="6">  <span class="dt">level              =</span> <span class="st">&quot;campaign&quot;</span>,</a>
-<a class="sourceLine" id="cb4-7" title="7">  <span class="dt">fields             =</span> <span class="st">&quot;campaign_name,</span></a>
-<a class="sourceLine" id="cb4-8" title="8"><span class="st">                        impressions,</span></a>
-<a class="sourceLine" id="cb4-9" title="9"><span class="st">                        clicks,</span></a>
-<a class="sourceLine" id="cb4-10" title="10"><span class="st">                        spend,</span></a>
-<a class="sourceLine" id="cb4-11" title="11"><span class="st">                        actions&quot;</span>,</a>
-<a class="sourceLine" id="cb4-12" title="12">  <span class="dt">filtering          =</span> <span class="st">&quot;impressions LESS_THAN 5000&quot;</span>,</a>
-<a class="sourceLine" id="cb4-13" title="13">  <span class="dt">date_start         =</span> <span class="st">&quot;2019-05-01&quot;</span>,</a>
-<a class="sourceLine" id="cb4-14" title="14">  <span class="dt">date_stop          =</span> <span class="st">&quot;2019-05-10&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1"><span class="kw">library</span>(rfacebookstat)</a>
+<a class="sourceLine" id="cb5-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb5-3" data-line-number="3"><span class="kw">options</span>(<span class="dt">rfacebookstat.access_token =</span> <span class="st">&quot;ваш токен&quot;</span>,</a>
+<a class="sourceLine" id="cb5-4" data-line-number="4">        <span class="dt">rfacebookstat.accounts_id  =</span> <span class="st">&quot;act_000000000&quot;</span>)</a>
+<a class="sourceLine" id="cb5-5" data-line-number="5">fb_data &lt;-<span class="st"> </span><span class="kw">fbGetMarketingStat</span>(</a>
+<a class="sourceLine" id="cb5-6" data-line-number="6">  <span class="dt">level              =</span> <span class="st">&quot;campaign&quot;</span>,</a>
+<a class="sourceLine" id="cb5-7" data-line-number="7">  <span class="dt">fields             =</span> <span class="st">&quot;campaign_name,</span></a>
+<a class="sourceLine" id="cb5-8" data-line-number="8"><span class="st">                        impressions,</span></a>
+<a class="sourceLine" id="cb5-9" data-line-number="9"><span class="st">                        clicks,</span></a>
+<a class="sourceLine" id="cb5-10" data-line-number="10"><span class="st">                        spend,</span></a>
+<a class="sourceLine" id="cb5-11" data-line-number="11"><span class="st">                        actions&quot;</span>,</a>
+<a class="sourceLine" id="cb5-12" data-line-number="12">  <span class="dt">filtering          =</span> <span class="st">&quot;impressions LESS_THAN 5000&quot;</span>,</a>
+<a class="sourceLine" id="cb5-13" data-line-number="13">  <span class="dt">date_start         =</span> <span class="st">&quot;2019-05-01&quot;</span>,</a>
+<a class="sourceLine" id="cb5-14" data-line-number="14">  <span class="dt">date_stop          =</span> <span class="st">&quot;2019-05-10&quot;</span>)</a></code></pre></div>
 <p>В приведённом примере мы указали фильтр <code>impressions LESS_THAN 5000</code> и таким образом оставили строки в которых поле impressions имеет значение менее 5000.</p>
 <p>Если вам необходимо использовать множественный оператор (IN_RANGE, NOT_IN_RANGE, IN, NOT_IN) то в упрошенном формате запись будет выглядеть так: <code>&quot;publisher_platform IN instagram,facebook&quot;</code>. Важно не ставить проблемы между списком значений.</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" title="1"><span class="kw">library</span>(rfacebookstat)</a>
-<a class="sourceLine" id="cb5-2" title="2"></a>
-<a class="sourceLine" id="cb5-3" title="3"><span class="kw">options</span>(<span class="dt">rfacebookstat.access_token =</span> <span class="st">&quot;ваш токен&quot;</span>,</a>
-<a class="sourceLine" id="cb5-4" title="4">        <span class="dt">rfacebookstat.accounts_id  =</span> <span class="st">&quot;act_000000000&quot;</span>)</a>
-<a class="sourceLine" id="cb5-5" title="5">fb_data &lt;-<span class="st"> </span><span class="kw">fbGetMarketingStat</span>(</a>
-<a class="sourceLine" id="cb5-6" title="6">  <span class="dt">level              =</span> <span class="st">&quot;campaign&quot;</span>,</a>
-<a class="sourceLine" id="cb5-7" title="7">  <span class="dt">fields             =</span> <span class="st">&quot;campaign_name,</span></a>
-<a class="sourceLine" id="cb5-8" title="8"><span class="st">                        impressions,</span></a>
-<a class="sourceLine" id="cb5-9" title="9"><span class="st">                        clicks,</span></a>
-<a class="sourceLine" id="cb5-10" title="10"><span class="st">                        spend,</span></a>
-<a class="sourceLine" id="cb5-11" title="11"><span class="st">                        actions&quot;</span>,</a>
-<a class="sourceLine" id="cb5-12" title="12">  <span class="dt">filtering          =</span> <span class="st">&quot;publisher_platform IN instagram,facebook&quot;</span>,</a>
-<a class="sourceLine" id="cb5-13" title="13">  <span class="dt">breakdowns         =</span> <span class="st">&quot;publisher_platform&quot;</span>,</a>
-<a class="sourceLine" id="cb5-14" title="14">  <span class="dt">date_start         =</span> <span class="st">&quot;2019-05-01&quot;</span>,</a>
-<a class="sourceLine" id="cb5-15" title="15">  <span class="dt">date_stop          =</span> <span class="st">&quot;2019-05-10&quot;</span>)</a></code></pre></div>
-<p>Если вы хотите применить несколько фиьтров то вы можете передать в аргумент <code>filtering</code> вектор из выражений, например: <code>c(&quot;clicks LESS_THAN 500&quot;, &quot;impressions GREATER_THAN 1000&quot;)</code>.</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" title="1"><span class="kw">library</span>(rfacebookstat)</a>
-<a class="sourceLine" id="cb6-2" title="2"></a>
-<a class="sourceLine" id="cb6-3" title="3"><span class="kw">options</span>(<span class="dt">rfacebookstat.access_token =</span> <span class="st">&quot;ваш токен&quot;</span>,</a>
-<a class="sourceLine" id="cb6-4" title="4">        <span class="dt">rfacebookstat.accounts_id  =</span> <span class="st">&quot;act_000000000&quot;</span>)</a>
-<a class="sourceLine" id="cb6-5" title="5">fb_data &lt;-<span class="st"> </span><span class="kw">fbGetMarketingStat</span>(</a>
-<a class="sourceLine" id="cb6-6" title="6">  <span class="dt">level              =</span> <span class="st">&quot;campaign&quot;</span>,</a>
-<a class="sourceLine" id="cb6-7" title="7">  <span class="dt">fields             =</span> <span class="st">&quot;campaign_name,</span></a>
-<a class="sourceLine" id="cb6-8" title="8"><span class="st">                        impressions,</span></a>
-<a class="sourceLine" id="cb6-9" title="9"><span class="st">                        clicks,</span></a>
-<a class="sourceLine" id="cb6-10" title="10"><span class="st">                        spend,</span></a>
-<a class="sourceLine" id="cb6-11" title="11"><span class="st">                        actions&quot;</span>,</a>
-<a class="sourceLine" id="cb6-12" title="12">  <span class="dt">filtering          =</span> <span class="kw">c</span>(<span class="st">&quot;clicks LESS_THAN 500&quot;</span>, <span class="st">&quot;impressions GREATER_THAN 1000&quot;</span>),</a>
-<a class="sourceLine" id="cb6-13" title="13">  <span class="dt">date_start         =</span> <span class="st">&quot;2019-05-01&quot;</span>,</a>
-<a class="sourceLine" id="cb6-14" title="14">  <span class="dt">date_stop          =</span> <span class="st">&quot;2019-05-10&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1"><span class="kw">library</span>(rfacebookstat)</a>
+<a class="sourceLine" id="cb6-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb6-3" data-line-number="3"><span class="kw">options</span>(<span class="dt">rfacebookstat.access_token =</span> <span class="st">&quot;ваш токен&quot;</span>,</a>
+<a class="sourceLine" id="cb6-4" data-line-number="4">        <span class="dt">rfacebookstat.accounts_id  =</span> <span class="st">&quot;act_000000000&quot;</span>)</a>
+<a class="sourceLine" id="cb6-5" data-line-number="5">fb_data &lt;-<span class="st"> </span><span class="kw">fbGetMarketingStat</span>(</a>
+<a class="sourceLine" id="cb6-6" data-line-number="6">  <span class="dt">level              =</span> <span class="st">&quot;campaign&quot;</span>,</a>
+<a class="sourceLine" id="cb6-7" data-line-number="7">  <span class="dt">fields             =</span> <span class="st">&quot;campaign_name,</span></a>
+<a class="sourceLine" id="cb6-8" data-line-number="8"><span class="st">                        impressions,</span></a>
+<a class="sourceLine" id="cb6-9" data-line-number="9"><span class="st">                        clicks,</span></a>
+<a class="sourceLine" id="cb6-10" data-line-number="10"><span class="st">                        spend,</span></a>
+<a class="sourceLine" id="cb6-11" data-line-number="11"><span class="st">                        actions&quot;</span>,</a>
+<a class="sourceLine" id="cb6-12" data-line-number="12">  <span class="dt">filtering          =</span> <span class="st">&quot;publisher_platform IN instagram,facebook&quot;</span>,</a>
+<a class="sourceLine" id="cb6-13" data-line-number="13">  <span class="dt">breakdowns         =</span> <span class="st">&quot;publisher_platform&quot;</span>,</a>
+<a class="sourceLine" id="cb6-14" data-line-number="14">  <span class="dt">date_start         =</span> <span class="st">&quot;2019-05-01&quot;</span>,</a>
+<a class="sourceLine" id="cb6-15" data-line-number="15">  <span class="dt">date_stop          =</span> <span class="st">&quot;2019-05-10&quot;</span>)</a></code></pre></div>
+<p>Если вы хотите применить несколько фильтров, то вы можете передать в аргумент <code>filtering</code> вектор из выражений, например: <code>c(&quot;clicks LESS_THAN 500&quot;, &quot;impressions GREATER_THAN 1000&quot;)</code>.</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1"><span class="kw">library</span>(rfacebookstat)</a>
+<a class="sourceLine" id="cb7-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb7-3" data-line-number="3"><span class="kw">options</span>(<span class="dt">rfacebookstat.access_token =</span> <span class="st">&quot;ваш токен&quot;</span>,</a>
+<a class="sourceLine" id="cb7-4" data-line-number="4">        <span class="dt">rfacebookstat.accounts_id  =</span> <span class="st">&quot;act_000000000&quot;</span>)</a>
+<a class="sourceLine" id="cb7-5" data-line-number="5">fb_data &lt;-<span class="st"> </span><span class="kw">fbGetMarketingStat</span>(</a>
+<a class="sourceLine" id="cb7-6" data-line-number="6">  <span class="dt">level              =</span> <span class="st">&quot;campaign&quot;</span>,</a>
+<a class="sourceLine" id="cb7-7" data-line-number="7">  <span class="dt">fields             =</span> <span class="st">&quot;campaign_name,</span></a>
+<a class="sourceLine" id="cb7-8" data-line-number="8"><span class="st">                        impressions,</span></a>
+<a class="sourceLine" id="cb7-9" data-line-number="9"><span class="st">                        clicks,</span></a>
+<a class="sourceLine" id="cb7-10" data-line-number="10"><span class="st">                        spend,</span></a>
+<a class="sourceLine" id="cb7-11" data-line-number="11"><span class="st">                        actions&quot;</span>,</a>
+<a class="sourceLine" id="cb7-12" data-line-number="12">  <span class="dt">filtering          =</span> <span class="kw">c</span>(<span class="st">&quot;clicks LESS_THAN 500&quot;</span>, <span class="st">&quot;impressions GREATER_THAN 1000&quot;</span>),</a>
+<a class="sourceLine" id="cb7-13" data-line-number="13">  <span class="dt">date_start         =</span> <span class="st">&quot;2019-05-01&quot;</span>,</a>
+<a class="sourceLine" id="cb7-14" data-line-number="14">  <span class="dt">date_stop          =</span> <span class="st">&quot;2019-05-10&quot;</span>)</a></code></pre></div>
 </div>
-<div id="json-" class="section level3">
+<div id="пример-фильтрации-в-json-формате" class="section level3">
 <h3>Пример фильтрации в JSON формате</h3>
-<p>Как я уже писал выше вы можете описывать фильтры в виде JSON объектов, но такая запись будет более громозка. Давайте приведу вам аналогию с представленными выше фильтрами.</p>
-<p>Упрошённый формат: <code>&quot;impressions LESS_THAN 5000&quot;</code></p>
+<p>Как я уже писал выше вы можете описывать фильтры в виде JSON объектов, но такая запись будет более громоздка. Давайте приведу вам аналогию с представленными выше фильтрами.</p>
+<p>Упрощённый формат: <code>&quot;impressions LESS_THAN 5000&quot;</code></p>
 <p>JSON: <code>&quot;[{&quot;field&quot;:&quot;impressions&quot;,&quot;operator&quot;:&quot;LESS_THAN&quot;,&quot;value&quot;:&quot;5000&quot;}]&quot;</code></p>
 <hr />
-<p>Упрошённый формат: <code>&quot;publisher_platform IN instagram,facebook&quot;</code></p>
+<p>Упрощённый формат: <code>&quot;publisher_platform IN instagram,facebook&quot;</code></p>
 <p>JSON: <code>[{&quot;field&quot;:&quot;publisher_platform&quot;,&quot;operator&quot;:&quot;IN&quot;,&quot;value&quot;:[&quot;instagram&quot;,&quot;facebook&quot;]}]</code></p>
 <hr />
-<p>Упрошённый формат: <code>c(&quot;clicks LESS_THAN 500&quot;, &quot;impressions GREATER_THAN 1000&quot;)</code></p>
+<p>Упрощённый формат: <code>c(&quot;clicks LESS_THAN 500&quot;, &quot;impressions GREATER_THAN 1000&quot;)</code></p>
 <p>JSON: <code>[{&quot;field&quot;:&quot;clicks&quot;,&quot;operator&quot;:&quot;LESS_THAN&quot;,&quot;value&quot;:&quot;500&quot;},{&quot;field&quot;:&quot;impressions&quot;,&quot;operator&quot;:&quot;GREATER_THAN&quot;,&quot;value&quot;:&quot;1000&quot;}]</code></p>
 </div>
 </div>
-<div id="api---request_speed" class="section level2">
+<div id="лимиты-api-и-аргумент-request_speed" class="section level2">
 <h2>Лимиты API и аргумент request_speed</h2>
 <p>По использованию аргумента <code>request_speed</code> есть целая <a href="https://bit.ly/2JS8hon">статья</a>, но я всё же немного опишу зачем данный аргумент нужен.</p>
 <p>В API Facebook на данный момент существует 2 уровня доступа к API (<a href="https://developers.facebook.com/docs/marketing-api/access">раздел в справке</a> API Facebook):</p>
 <ul>
-<li>Разработка- Тестирование приложений с помощью API.</li>
+<li>Разработка - Тестирование приложений с помощью API.</li>
 <li>Стандартный уровень доступа для управления рекламой - Дополнительные ресурсы, например менее строгие ограничения количества обращений, а также возможность принять участие в программе для партнеров Facebook.</li>
 </ul>
-<p>По умолчанию все создаваемые вами приложения получают уровень “Разработка”. Данный уровень имеет серьёзные ограничения на количество отправляемых в API запросов. Функция <code>fbGetMarketingStat</code> при использовании аргумента <code>interval</code> равным <code>&quot;day&quot;</code> загружает данные по дням, и на каждый день отправляет отделый запрос в API.</p>
-<p>Так же отдельно разделяются запросы если вы загружаете данные сразу по несколько аккаунтам, таким образом если вы планируете загрузить даннеы с 1 января по 21 января по 3ём аккаунтам функция отправит (31 * 3) 93 запроса к API.</p>
-<p>В случае если вы имеете стандартный доступ то для вас это не будет проблемой и вы можете установить <code>request_speed = &quot;fast&quot;</code>, но для приложений с уровнем доступа “Разработка” такой объём отправляемых запросов может выйти далеко за лимиты API, от части <code>fbGetMarketingStat</code> умеет обходить такие лимиты каждый раз уходя в бан при их привышении, но скорость загрузки данных при попадает в бан будет очень низкий, иногда бан может составлять 5 минут.</p>
-<p>Поэтому если ваше приложение имеет уровень доступа “Разработке” при загрузке данных по дням за длительный период рекомендуется использовать <code>request_speed = &quot;slow&quot;</code>. Если значениеи “slow” помогает вы можете самостоятельно задавать паузу в секундах между запросами, например <code>request_speed = 4</code> будет задавать 4 секундую паузу между отправкой запросов.</p>
+<p>По умолчанию все создаваемые вами приложения получают уровень “Разработка”. Данный уровень имеет серьёзные ограничения на количество отправляемых в API запросов. Функция <code>fbGetMarketingStat</code> при использовании аргумента <code>interval</code> равным <code>&quot;day&quot;</code> загружает данные по дням, и на каждый день отправляет отдельный запрос в API.</p>
+<p>Так же отдельно разделяются запросы если вы загружаете данные сразу по несколько аккаунтам, таким образом если вы планируете загрузить данные с 1 января по 21 января по 3ём аккаунтам функция отправит (31 * 3) 93 запроса к API.</p>
+<p>В случае если вы имеете стандартный доступ то для вас это не будет проблемой, и вы можете установить <code>request_speed = &quot;fast&quot;</code>, но для приложений с уровнем доступа “Разработка” такой объём отправляемых запросов может выйти далеко за лимиты API, от части <code>fbGetMarketingStat</code> умеет обходить такие лимиты каждый раз уходя в бан при их превышении, но скорость загрузки данных при попадании в бан будет очень низкий, иногда бан может составлять 5 минут.</p>
+<p>Поэтому если ваше приложение имеет уровень доступа “Разработке” при загрузке данных по дням за длительный период рекомендуется использовать <code>request_speed = &quot;slow&quot;</code>. Если значение “slow” не помогает вы можете самостоятельно задавать паузу в секундах между запросами, например <code>request_speed = 4</code> будет задавать 4 секундную паузу между отправкой запросов.</p>
 <p>Для получения стандартного доступа требуется перейти в <a href="https://developers.facebook.com/apps/">ваше приложение</a> в раздел настроек API Marketing и отправить заявку на “Ads Management Standart Access”.</p>
 <div class="figure">
 <img src="data:text/plain;charset=utf-8,URL%20signature%20expired" alt="Приложение" />
@@ -586,6 +633,9 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 </div>
 </div>
 
+
+
+<!-- code folding -->
 
 
 <!-- dynamically load mathjax for compatibility with self-contained -->
