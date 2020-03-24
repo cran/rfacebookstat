@@ -3,7 +3,7 @@
 fbGetToken <-
   function(app_id = NULL){
     if(is.null(app_id)) stop("Enter your app id.")
-    utils::browseURL(paste0("https://www.facebook.com/dialog/oauth?client_id=",app_id  ,"&display=popup&redirect_uri=https://selesnow.github.io/rfacebookstat/getToken/get_token.html&response_type=token&scope=ads_read,business_management,manage_pages,ads_management"))
+    utils::browseURL(paste0("https://www.facebook.com/dialog/oauth?client_id=",app_id  ,"&display=popup&redirect_uri=https://selesnow.github.io/rfacebookstat/getToken/get_token.html&response_type=token&scope=ads_read,business_management,manage_pages,ads_management,public_profile"))
     token <- readline(prompt = "Enter your token: ")
     options(rfacebookstat.access_token = token)
     return(token)
@@ -111,11 +111,11 @@ fbAuth <- function(app_id      = getOption("rfacebookstat.app_id"),
                                        fb_exchange_token = st_token)
         
         # check token
-        token_info <- fbCheckToken(lt_token, lt_token)
+        token_info <- fbCheckToken(lt_token, str_interp("${app_id}|${app_secret}"))
         
         # get user info 
         user_info  <- fbGetUserInfo(access_token = lt_token, 
-                                    user_id      = token_info$user_id)
+                                    user_id      = ifelse( is.null(token_info$user_id), "me", token_info$user_id))
         
         # create token object
         fb_token   <- list(access_token = lt_token, 
@@ -159,7 +159,7 @@ fbAuth <- function(app_id      = getOption("rfacebookstat.app_id"),
                                    fb_exchange_token = st_token)
     
     # check token
-    token_info <- fbCheckToken(lt_token, lt_token)
+    token_info <- fbCheckToken(lt_token, str_interp("${app_id}|${app_secret}"))
     
     # get user info 
     user_info  <- fbGetUserInfo(access_token = lt_token, 
@@ -252,4 +252,10 @@ fbGetSettings <- function() {
     
   }
   
+}
+
+# revoke app privilegies
+fbRevokeAppPrivilegies <- 
+   function( app_id = getOption("rfacebookstat.app_id") ) {
+  browseURL(str_interp("https://www.facebook.com/settings/?tab=business_tools&initial_open_app_id=${app_id}"))
 }
