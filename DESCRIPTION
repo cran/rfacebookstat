@@ -1,8 +1,8 @@
 Package: rfacebookstat
 Type: Package
 Title: Load Data from Facebook API Marketing
-Version: 2.1.0
-Date: 2020-05-27
+Version: 2.1.1
+Date: 2020-05-29
 Authors@R: 
     c(person(given  = "Alexey",
              family = "Seleznev",
@@ -26,6 +26,6 @@ VignetteBuilder: knitr
 Encoding: UTF-8
 Language: ru
 NeedsCompilation: no
-Packaged: 2020-05-27 06:44:54 UTC; Alsey
+Packaged: 2020-05-29 13:10:31 UTC; Alsey
 Repository: CRAN
-Date/Publication: 2020-05-27 07:40:02 UTC
+Date/Publication: 2020-05-29 14:20:02 UTC
