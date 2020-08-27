@@ -67,9 +67,9 @@ fbGetUserInfo <- function(access_token = getOption("rfacebookstat.access_token")
 }
 
 # authorize
-fbAuth <- function(app_id      = getOption("rfacebookstat.app_id"), 
+fbAuth <- function(username    = getOption("rfacebookstat.username"),
+                   app_id      = getOption("rfacebookstat.app_id"), 
                    app_secret  = getOption("rfacebookstat.app_secret"), 
-                   username    = getOption("rfacebookstat.username"),
                    token_path  = fbTokenPath(),
                    reauth      = FALSE,
                    skip_option = FALSE) {
@@ -108,7 +108,7 @@ fbAuth <- function(app_id      = getOption("rfacebookstat.app_id"),
         # change for longtime
         lt_token <- fbGetLongTimeToken(client_id         = app_id,
                                        client_secret     = app_secret, 
-                                       fb_exchange_token = st_token)
+                                       fb_exchange_token = fb_token$access_token)
         
         # check token
         token_info <- fbCheckToken(lt_token, str_interp("${app_id}|${app_secret}"))

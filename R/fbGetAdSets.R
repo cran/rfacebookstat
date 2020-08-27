@@ -73,6 +73,11 @@ fbGetAdSets <- function(accounts_id  = getOption("rfacebookstat.accounts_id"),
   
   pars_answer <- content(api_answer, as = "parsed")
   
+  if(!is.null(pars_answer$error)) {
+    error <- pars_answer$error
+    stop(pars_answer$error)
+  }
+  
   tempData     <- map_df(pars_answer$data, flatten)
   result       <- bind_rows(result, tempData)
 

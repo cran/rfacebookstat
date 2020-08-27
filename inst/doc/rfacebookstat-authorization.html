@@ -14,23 +14,35 @@
 
 <title>Авторизация в API facebook</title>
 
+<script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
+// be compatible with the behavior of Pandoc < 2.8).
+document.addEventListener('DOMContentLoaded', function(e) {
+  var hs = document.querySelectorAll("div.section[class*='level'] > :first-child");
+  var i, h, a;
+  for (i = 0; i < hs.length; i++) {
+    h = hs[i];
+    if (!/^h[1-6]$/i.test(h.tagName)) continue;  // it should be a header h1-h6
+    a = h.attributes;
+    while (a.length > 0) h.removeAttribute(a[0].name);
+  }
+});
+</script>
 
 
 <style type="text/css">code{white-space: pre;}</style>
 <style type="text/css" data-origin="pandoc">
-code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
-code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; position: relative; }
 div.sourceCode { margin: 1em 0; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
 }
 @media print {
-code.sourceCode { white-space: pre-wrap; }
-code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -50,7 +62,7 @@ pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-le
 div.sourceCode
   {   }
 @media screen {
-code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
@@ -311,9 +323,9 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 <div id="простейшая-авторизация" class="section level1">
 <h1>Простейшая авторизация</h1>
 <p>Наиболее быстрый и простой способ пройти авторизацию и получить маркер для работы с API Facebook - использовать приложение вшитое в пакет <code>rfacebookstat</code>. Для этого вам достаточно использовать функцию <code>fbAuth()</code>.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="kw">library</span>(rfacebookstat)</span>
-<span id="cb1-2"><a href="#cb1-2"></a></span>
-<span id="cb1-3"><a href="#cb1-3"></a><span class="kw">fbAuth</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a><span class="kw">library</span>(rfacebookstat)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true"></a><span class="kw">fbAuth</span>()</span></code></pre></div>
 <p>После запуска функции <code>fbAuth()</code> вы будете перенаправлены в браузер для подтверждения разрешения пакету rfacebookstat доступа к вашим рекламным кабинетам. Далее вы будете перенаправлены на другую страницу, где для вас будет сгенерирован краткосрочный маркер доступа к API. Его необходимо скопировать и вставить в консоль RStudio в качестве ответа на запрос “Enter your token:”.</p>
 <p>Полученный ранее краткосрочный токен будет изменён на долгосрочный, о чём вы узнаете из сообщения “Token changed to long time successfully” в консоли RStudio.</p>
 <p>У вас есть возможно сохранить полученные данные в файл, для того, что бы в следующий раз не было необходимости проходить авторизации через браузер. Для этого ответьте <em>y</em> или <em>yes</em> на вопрос “Do you want save your access token into rds file C:/my_develop_workshop/ppc_report_2/selesnow.rfb_auth.rds for use it between R sessions ?”, который вы увидите в консоли RStudio.</p>
@@ -329,7 +341,7 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 <p>Из этого сообщения вы можете узнать id и название приложения которому вы предоставили разрешение на доступ к данным, id и имя пользователя под которым вы прошли авторизацию, а также дату до которой будет действителен полученный вами маркер доступа, never означает что вы получили бессрочный токен.</p>
 <p>В поле <em>Access token</em> должен отображаться ваш маркер, но по умолчанию он не выводится в консоль, если вы работаете под Windows, то каждый раз когда вы будете выводить на печать объект полученный с помощью функции <code>fbAuth()</code> ваш маркер доступа автоматически будет передан в буфер обмена.</p>
 <p>Если вам необходимо вывести в консоль полученный маркер, то это можно сделать с помощью функции <code>print()</code> с использованием аргумента <em>show_token</em>.</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="kw">print</span>(<span class="kw">fbAuth</span>(), <span class="dt">show_token =</span> T)</span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true"></a><span class="kw">print</span>(<span class="kw">fbAuth</span>(), <span class="dt">show_token =</span> T)</span></code></pre></div>
 <pre><code> Facebook access token
  Access token:  EAACg7dbg.................... 
  App id:        176943372709235 
@@ -338,7 +350,7 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
  User name:     Алексей Селезнёв 
  Expires at:    never</code></pre>
 <p>Теперь можно выполнить первый вызов к Facebook Marketing API. Например вы можете запросить список рекламным аккаунтам к которым у вас есть доступ с помощью функции <code>fbGetAdAccounts()</code>.</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="kw">fbGetAdAccounts</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true"></a><span class="kw">fbGetAdAccounts</span>()</span></code></pre></div>
 <pre><code>Token load from C:/facebook/credentials/.rfb_auth.rds
 # A tibble: 420 x 10
    id    name  account_id account_status amount_spent balance business_name currency owner
@@ -397,12 +409,12 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 <li>skip_option - Игнорировать опции и переменные окружения при авторизации (будет рассмотрено ниже)</li>
 </ul>
 <p>Соответственно авторизоваться с помощью собственного приложения можно передав в аргументы <em>app_id</em> и <em>app_secret</em> идентификатор и секрет созданного вами приложения.</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="kw">fbAuth</span>(<span class="dt">app_id      =</span> <span class="dv">556970798471513</span>, </span>
-<span id="cb7-2"><a href="#cb7-2"></a>       <span class="dt">app_secret  =</span> <span class="st">&quot;10fbc64e0c426feb4e774395c97237fa&quot;</span>,</span>
-<span id="cb7-3"><a href="#cb7-3"></a>       <span class="dt">username    =</span> <span class="st">&quot;seleznev_a&quot;</span>,</span>
-<span id="cb7-4"><a href="#cb7-4"></a>       <span class="dt">skip_option =</span> <span class="ot">TRUE</span>, </span>
-<span id="cb7-5"><a href="#cb7-5"></a>       <span class="dt">reauth      =</span> <span class="ot">FALSE</span>,</span>
-<span id="cb7-6"><a href="#cb7-6"></a>       <span class="dt">token_path  =</span> <span class="st">&quot;D:/fb_auth_store&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true"></a><span class="kw">fbAuth</span>(<span class="dt">app_id      =</span> <span class="dv">556970798471513</span>, </span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true"></a>       <span class="dt">app_secret  =</span> <span class="st">&quot;10fbc64e0c426feb4e774395c97237fa&quot;</span>,</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true"></a>       <span class="dt">username    =</span> <span class="st">&quot;seleznev_a&quot;</span>,</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true"></a>       <span class="dt">skip_option =</span> <span class="ot">TRUE</span>, </span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true"></a>       <span class="dt">reauth      =</span> <span class="ot">FALSE</span>,</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true"></a>       <span class="dt">token_path  =</span> <span class="st">&quot;D:/fb_auth_store&quot;</span>)</span></code></pre></div>
 <pre><code> Facebook access token
  Access token:  &lt;hidden&gt; 
  App id:        556970798471513 
@@ -430,7 +442,7 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 <h3>Настройка переменных среды через файл .Renviron</h3>
 <p>Файл <em>.Renviron</em> в домашнем каталоге R, и позволяет вам задавать переменные среды.</p>
 <p>Для начала необходимо найти домашний каталог:</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a><span class="kw">path.expand</span>(<span class="st">&quot;~&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true"></a><span class="kw">path.expand</span>(<span class="st">&quot;~&quot;</span>)</span></code></pre></div>
 <pre><code>[1] &quot;C:/Users/username/Documents&quot;</code></pre>
 <p>Обычно это папка с вашими документами, как и в моём примере. Далее вам необходимо создать в этой папке файл <em>.Renviron</em>. И прописать в нём значение некоторых переменных, которые используются в <code>rfacebookstat</code>:</p>
 <ul>
@@ -465,10 +477,10 @@ RFB_TOKEN_PATH=&quot;D:/fb_auth_store&quot;</code></pre>
 <div id="задать-в-начале-скрипта-с-помощью-команды" class="section level3">
 <h3>Задать в начале скрипта с помощью команды</h3>
 <p>Ещё один способ, до подключения пакета <code>rfacebookstat</code> в скрипте задать переменные с помощью функции <code>Sys.setenv()</code>.</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a><span class="kw">Sys.setenv</span>(<span class="dt">RFB_USER=</span><span class="st">&quot;seleznev_a&quot;</span>, </span>
-<span id="cb13-2"><a href="#cb13-2"></a>           <span class="dt">RFB_TOKEN_PATH=</span><span class="st">&quot;D:/fb_auth_store&quot;</span>)</span>
-<span id="cb13-3"><a href="#cb13-3"></a></span>
-<span id="cb13-4"><a href="#cb13-4"></a><span class="kw">library</span>(rfacebookstat)</span></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true"></a><span class="kw">Sys.setenv</span>(<span class="dt">RFB_USER=</span><span class="st">&quot;seleznev_a&quot;</span>, </span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true"></a>           <span class="dt">RFB_TOKEN_PATH=</span><span class="st">&quot;D:/fb_auth_store&quot;</span>)</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true"></a></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true"></a><span class="kw">library</span>(rfacebookstat)</span></code></pre></div>
 </div>
 <div id="как-определить-что-вы-успешно-установили-переменные-среды" class="section level3">
 <h3>Как определить что вы успешно установили переменные среды</h3>

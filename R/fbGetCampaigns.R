@@ -74,7 +74,7 @@ fbGetCampaigns <- function(accounts_id  = getOption("rfacebookstat.accounts_id")
       
       if(!is.null(pars_answer$error)) {
         error <- pars_answer$error
-        message(message(pars_answer$error))
+        stop(pars_answer$error)
       }
       
       result <- c(result, pars_answer$data)

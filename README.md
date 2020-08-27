@@ -4,11 +4,11 @@
 <a href="https://selesnow.github.io/"><img src="https://alexeyseleznev.files.wordpress.com/2017/03/as.png" height="80"></a>
 </p>
 
-# rfacebookstat - R пакет для работы с рекламным кабинетом Facebook <a href='https:/selesnow.github.io/rfacebookstat'><img src='https://raw.githubusercontent.com/selesnow/rfacebookstat/master/inst/logo/rfacebookstat.png' align="right" height="139" /></a>
+# rfacebookstat - R пакет для работы с рекламным кабинетом Facebook <a href='https://selesnow.github.io/rfacebookstat/'><img src='https://raw.githubusercontent.com/selesnow/rfacebookstat/master/inst/logo/rfacebookstat.png' align="right" height="139" /></a>
 
 ## CRAN
 
-[![Rdoc](http://www.rdocumentation.org/badges/version/rfacebookstat)](http://www.rdocumentation.org/packages/rfacebookstat)
+[![Rdoc](http://www.rdocumentation.org/badges/version/rfacebookstat)](https://www.rdocumentation.org/packages/rfacebookstat)
 [![rpackages.io rank](http://www.rpackages.io/badge/rfacebookstat.svg)](http://www.rpackages.io/package/rfacebookstat)
 [![](https://cranlogs.r-pkg.org/badges/rfacebookstat)](https://cran.r-project.org/package=rfacebookstat)
 
@@ -142,5 +142,5 @@ my_fb_stats <- fbGetMarketingStat(level = "campaign",
 <Br>Telegram Channel: [R4marketing](https://t.me/R4marketing)
 <Br>email: selesnow@gmail.com
 <Br>skype: selesnow
-<Br>facebook: [facebook.com/selesnow](https://facebook.com/selesnow)
+<Br>facebook: [facebook.com/selesnow](https://www.facebook.com/selesnow)
 <Br>blog: [alexeyseleznev.wordpress.com](https://alexeyseleznev.wordpress.com/)

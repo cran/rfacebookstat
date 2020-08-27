@@ -32,22 +32,24 @@ fbParserAds <- function(x) {
 # pasing ad creatives
 fbParserAdCreatives <- function(x) {
   
-  if ( x$object_type == "VIDEO" ) {
-    
-    data_type_name <- "video_data"
-    
-  } else {
-    
-    data_type_name <- "link_data"
-    
+  if ( ! is.null(x$object_type) ) {
+    if ( x$object_type == "VIDEO" ) {
+      
+      data_type_name <- "video_data"
+      
+    } else {
+      
+      data_type_name <- "link_data"
+      
+    }
   }
   
   return(
     list(
       id               = x$id,
       name             = x$name,
-      title            = x$title,
-      body             = x$body,
+      title            = fbNullReplacer(x$title),
+      body             = fbNullReplacer(x$body),
       status           = x$status,
       object_type      = fbNullReplacer(x$object_type),
       url_tags         = fbNullReplacer(x$url_tags),
@@ -69,8 +71,7 @@ fbParserAdCreatives <- function(x) {
       video_id         = fbNullReplacer(x$object_story_spec$video_data$video_id), 
       attachment_style = fbNullReplacer(x$object_story_spec$link_data$attachment_style), 
       description      = fbNullReplacer(x$object_story_spec$link_data$description), 
-      image_hash       = fbNullReplacer(x$object_story_spec[[data_type_name]]$image_hash),
-      object_type      = fbNullReplacer(x$object_type)
+      image_hash       = fbNullReplacer(x$object_story_spec[[data_type_name]]$image_hash)
     )
   )
   
