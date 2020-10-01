@@ -12,7 +12,7 @@
 
 <meta name="author" content="Алексей Селезнёв" />
 
-<meta name="date" content="2020-08-27" />
+<meta name="date" content="2020-10-01" />
 
 <title>Загрузки статистики из рекламных аккаунтов Facebook</title>
 
@@ -315,7 +315,7 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 
 <h1 class="title toc-ignore">Загрузки статистики из рекламных аккаунтов Facebook</h1>
 <h4 class="author">Алексей Селезнёв</h4>
-<h4 class="date">2020-08-27</h4>
+<h4 class="date">2020-10-01</h4>
 
 
 
@@ -333,11 +333,13 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 <li><em>filtering</em> - Текстовая строка или вектор. Фильтрацию отчёта вы можете задавать либо в JSON формате либо в упрощенном формате, более подробно о фильтрации будет написано немного ниже.</li>
 <li><em>date_start</em> - Дата начала отчётного периода.</li>
 <li><em>date_stop</em> - Дата завершения рабочего отчётного периода.</li>
+<li><em>date_preset</em> - С попомщью этого аргумента, вы можете использовать преднастройки для запроса данных за относительный период, например за прошлый месяц. Допустимые значения: today, yesterday, this_month, last_month, this_quarter, lifetime, last_3d, last_7d, last_14d, last_28d, last_30d, last_90d, last_week_mon_sun, last_week_sun_sat, last_quarter, last_year, this_week_mon_today, this_week_sun_today, this_year</li>
 <li><em>request_speed</em> - Скорость отправки запросов, возможные значения “normal”, “fast” или “slow”. Так же можно задать числовое значение, которое будет задавать количество секунд в паузе между отправкой запросов к API.</li>
 <li><em>api_version</em> - Версия API к которой будет отправлен запрос, по умолчанию берётся значение из опции <em>rfacebookstat.api_version</em>.</li>
 <li><em>action_report_time</em> - Допустимые значения: impression, conversion. Определяет отчет о времени действия статистики. Например, если человек видел объявление 1 января, но совершил конверсию 2 января, при запросе API с <code>action_report_time = &quot;impression&quot;</code>, вы увидите конверсию 1 января. Когда вы запросите API с помощью <code>action_report_time = &quot;conversion&quot;</code>, вы увидите преобразование 2 января.</li>
 <li><em>attribution_window</em> - Окна атрибуции</li>
-<li><em>interval</em> - Группировка по временному интервалу, возможные значения: day, week, month, quarter, year.</li>
+<li><em>interval</em> - Группировка по временному интервалу, возможные значения: day, all_days, overall, monthly, weekly, либо вы можете числом указать количество дней, и результат вашего запроса будет сгруппирован такими временными отрезками.</li>
+<li><em>use_account_attribution_setting</em> - Если для этого параметра установлено значение true, результаты ваших объявлений будут отображаться с использованием настроек атрибуции, определенных для рекламного аккаунта.</li>
 <li><em>console_type</em> - Тип выводимых в консоль данных, возможные значения progressbar, message.</li>
 <li><em>username</em> - Логин на Facebook под которым вы проходили авторизацию, используется для хранения учётных данных для работы с API.</li>
 <li><em>token_path</em> - Путь к папке в которой хранится файл с учётными данными на Facebook, которые вы получили при авторизации.</li>
