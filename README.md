@@ -33,6 +33,11 @@ For use inside package manual run: `help( package = "rfacebookstat")`
 4. Автоматическая авторизация через переменные среды на Windows
 5. Опции пакета и загрузка объектов из рекламных кабинетов.
 6. Загрузка статистики рекламы из рекламных кабинетов Facebook в R и визуализация данных.
+7. Как загрузить статистику рекламных кампаний из Facebook в Power BI.
+8. Как загрузить данные о расходах на рекламу из Facebook в Google Analytics
+9. Как загрузить данные о расходах и кликах из Facebook в Яндекс.Метрику.
+10. Как запрашивать данные из бизнес менеджера Facebook.
+11. Как разбить запрос статистики по рекламе Facebook на подзапросы по временным интервалам.
 
 ## Установка пакета rfacebookstat
 Для установки пакета запустите приведённый ниже код в RStudio или R консоли.
@@ -139,8 +144,7 @@ my_fb_stats <- fbGetMarketingStat(level = "campaign",
 
 ### Автор пакета
 Алексей Селезнёв, Head of analytics dept. at [Netpeak](https://netpeak.net)
-<Br>Telegram Channel: [R4marketing](https://t.me/R4marketing)
+<Br>Telegram Channel: R4marketing
 <Br>email: selesnow@gmail.com
-<Br>skype: selesnow
 <Br>facebook: [facebook.com/selesnow](https://www.facebook.com/selesnow)
 <Br>blog: [alexeyseleznev.wordpress.com](https://alexeyseleznev.wordpress.com/)

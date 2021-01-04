@@ -34,6 +34,7 @@ knitr::opts_chunk$set(
 * *date_stop* - Дата завершения рабочего отчётного периода.
 * *date_preset* - С попомщью этого аргумента, вы можете использовать преднастройки для запроса данных за относительный период, например за прошлый месяц. Допустимые значения: today, yesterday, this_month, last_month, this_quarter, lifetime, last_3d, last_7d, last_14d, last_28d, last_30d, last_90d, last_week_mon_sun, last_week_sun_sat, last_quarter, last_year, this_week_mon_today, this_week_sun_today, this_year
 * *request_speed* - Скорость отправки запросов, возможные значения "normal", "fast" или "slow". Так же можно задать числовое значение, которое будет задавать количество секунд в паузе между отправкой запросов к API.
+* *fetch_by* - позволяет разбить большой запрос, за длительный период, на части по неделям, месяцам, кварталам и годам. Приннимает одно из следующих значений: "day", "week", "month", "quarter", "year".
 * *api_version* - Версия API к которой будет отправлен запрос, по умолчанию берётся значение из опции *rfacebookstat.api_version*.
 * *action_report_time* - Допустимые значения: impression, conversion. Определяет отчет о времени действия статистики. Например, если человек видел объявление 1 января, но совершил конверсию 2 января, при запросе API с `action_report_time = "impression"`, вы увидите конверсию 1 января. Когда вы запросите API с помощью `action_report_time = "conversion"`, вы увидите преобразование 2 января.
 * *attribution_window* - Окна атрибуции
@@ -354,7 +355,7 @@ JSON: `[{"field":"clicks","operator":"LESS_THAN","value":"500"},{"field":"impres
 ## Лимиты API и аргумент request_speed
 По использованию аргумента `request_speed` есть целая [статья](https://alexeyseleznev.wordpress.com/2017/12/26/rfacebookstat-1-5-0-%D0%BA%D0%B0%D0%BA-%D0%BF%D1%80%D0%B0%D0%B2%D0%B8%D0%BB%D1%8C%D0%BD%D0%BE-%D0%B8%D1%81%D0%BF%D0%BE%D0%BB%D1%8C%D0%B7%D0%BE%D0%B2%D0%B0%D1%82%D1%8C-%D0%B0%D1%80%D0%B3%D1%83%D0%BC/), но я всё же немного опишу зачем данный аргумент нужен.
 
-В API Facebook на данный момент существует 2 уровня доступа к API ([раздел в справке](https://developers.facebook.com/docs/marketing-api/access) API Facebook):
+В API Facebook на данный момент существует 2 уровня доступа к API ([раздел в справке](https://developers.facebook.com/docs/marketing-api/overview/authorization) API Facebook):
 
 * Разработка - Тестирование приложений с помощью API.
 * Стандартный уровень доступа для управления рекламой - Дополнительные ресурсы, например менее строгие ограничения количества обращений, а также возможность принять участие в программе для партнеров Facebook.

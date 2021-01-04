@@ -1,8 +1,8 @@
 Package: rfacebookstat
 Type: Package
 Title: Load Data from Facebook API Marketing
-Version: 2.1.9
-Date: 2020-09-24
+Version: 2.2.2
+Date: 2021-01-04
 Authors@R: 
     c(person(given  = "Alexey",
              family = "Seleznev",
@@ -17,7 +17,7 @@ Description: Load data by campaigns, ads, ad sets and insights, ad account and b
 Depends: R (>= 3.5.0)
 BugReports: https://github.com/selesnow/rfacebookstat/issues
 Imports: httr, jsonlite, dplyr, purrr, tidyr (>= 1.0.0), stringr,
-        tidyselect
+        tidyselect, pbapply
 URL: https://selesnow.github.io/rfacebookstat/,
         https://www.youtube.com/playlist?list=PLD2LDq8edf4pItOb-vZTG5AXZK2niJ8_R
 License: MIT + file LICENSE
@@ -26,6 +26,6 @@ VignetteBuilder: knitr
 Encoding: UTF-8
 Language: ru
 NeedsCompilation: no
-Packaged: 2020-10-01 06:08:56 UTC; Alsey
+Packaged: 2021-01-04 12:15:13 UTC; Alsey
 Repository: CRAN
-Date/Publication: 2020-10-01 06:20:02 UTC
+Date/Publication: 2021-01-04 15:20:02 UTC
