@@ -87,7 +87,7 @@ fbGetAdCreative <- function(accounts_id  = getOption("rfacebookstat.accounts_id"
       url <- str_interp("https://graph.facebook.com/${api_version}/${account_id}/adcreatives")
     
       api_answer  <- GET(url, 
-                         query = list(fields       = "ad_id,name,title,body,status,adlabels,call_to_action_type,link_url,link_destination_display_url,template_url,url_tags,thumbnail_url,image_url,object_story_spec,object_id,object_type,video_id,account_id",
+                         query = list(fields       = "ad_id,name,title,body,status,adlabels,call_to_action_type,link_url,link_destination_display_url,template_url,url_tags,thumbnail_url,image_url,image_hash,object_story_spec,object_id,object_type,video_id,account_id",
                                       limit        = 150,
                                       filtering    = filtering,
                                       access_token = access_token))
