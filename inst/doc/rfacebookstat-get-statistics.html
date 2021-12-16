@@ -12,7 +12,7 @@
 
 <meta name="author" content="Алексей Селезнёв" />
 
-<meta name="date" content="2021-07-27" />
+<meta name="date" content="2021-12-15" />
 
 <title>Загрузки статистики из рекламных аккаунтов Facebook</title>
 
@@ -141,7 +141,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <h1 class="title toc-ignore">Загрузки статистики из рекламных аккаунтов Facebook</h1>
 <h4 class="author">Алексей Селезнёв</h4>
-<h4 class="date">2021-07-27</h4>
+<h4 class="date">2021-12-15</h4>
 
 
 
@@ -151,7 +151,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Функция имеет множество аргументов с помощью которых вы можете максимально точно обозначить формат получаемых из API Facebook данных.</p>
 <ul>
 <li><em>accounts_id</em> - ID рекламных аккаунтов, перед ID необходимо указать префикс <code>act_</code>, вы можете указать вектор из ID аккаунтов если требуется загрузить данные из набора аккаунтов. По умолчанию запрашивает значение опции <em>rfacebookstat.accounts_id</em>.</li>
-<li><em>sorting</em> - Поле для сортировки полученных данных, так же вы можете указать направление добавив &quot;_ascending&quot; или &quot;_descending&quot; в поле сортировки. Например “reach_descending”. Для действий вы можете сортировать по типу действия в форме “actions: <action_type>”. Например, [“actions: link_click_ascending”]. Вы можете задать только одно поле для сортировки.</li>
+<li><em>sorting</em> - Поле для сортировки полученных данных, так же вы можете указать направление добавив “_ascending” или “_descending” в поле сортировки. Например “reach_descending”. Для действий вы можете сортировать по типу действия в форме “actions: <action_type>”. Например, [“actions: link_click_ascending”]. Вы можете задать только одно поле для сортировки.</li>
 <li><em>level</em> - Уровень группировки данных, принимает одно из следующих значений: ad, adset, campaign, account. По умолчанию имеет значение account.</li>
 <li><em>action_breakdowns</em> - Разбивки по действиям, более подробно о них можно узнать в <a href="https://developers.facebook.com/docs/marketing-api/insights/breakdowns#actionsbreakdown">документации</a> к API Facebook, так же более подробно они будут рассмотрены позже в этой виньетке.</li>
 <li><em>breakdowns</em> - Общие разбивки которые предоставляют дополнительные возможности по группировке данных, подробности в <a href="https://developers.facebook.com/docs/marketing-api/insights/breakdowns#ageandgender">документации</a> к API Facebook, так же этот аргумент будет более подробно рассмотрен немного ниже.</li>
