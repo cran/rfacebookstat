@@ -1,9 +1,25 @@
 # authorization
 
+#' Get API facebook token.
+#' @description Get API facebook token for access to facebook ads API.
+#'
+#' @param app_id ID of your Facebook App
+#' @param scopes Permissions provide a way for your app to access data from Facebook. For detail see \href{https://developers.facebook.com/docs/permissions/reference/}{docmentation}
+#'
+#' @return API token
+#' @export
+#'
+#' @examples
+#' \dontrun{
+#' tkn <- fbGetToken()
+#' }
 fbGetToken <-
   function(
     app_id = NULL,
-    scopes = c("ads_read", "business_management", "pages_manage_ads", "ads_management", "public_profile") ){
+    scopes = c("ads_read", "business_management", "pages_manage_ads", "ads_management", "public_profile") 
+    ) 
+  {
+    
     if(is.null(app_id)) stop("Enter your app id.")
     scopes <- paste(scopes, collapse = ",")
     utils::browseURL(paste0("https://www.facebook.com/dialog/oauth?client_id=",app_id  ,"&display=popup&redirect_uri=https://selesnow.github.io/rfacebookstat/getToken/get_token.html&response_type=token&scope=",scopes))

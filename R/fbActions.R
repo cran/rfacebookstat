@@ -37,11 +37,32 @@ fbAction.default <- function( obj ) {
                  bind_rows() %>%
                  pivot_longer(cols = -matches("action\\_.*" ), names_to = "action_sufix", values_to = "val") %>%
                  unite(action_type, matches("action\\_.*" ), remove = T) %>%
-                 replace_na(list(val = 0)) %>%
+                 replace_na(list(val = "0")) %>%
                  pivot_wider(names_from = "action_type", values_from = "val", values_fill = list("val" = "0")) %>%
                  bind_cols(other_col, .)
                
-               df <- df_actions
+               action_df <- df_actions
+             } 
+             
+             if ( length(.x$conversions ) > 0 ) {
+               
+               df_conversion <-
+                 .x$conversions %>%
+                 bind_rows() %>%
+                 pivot_longer(cols = -matches("action\\_.*" ), names_to = "action_sufix", values_to = "val") %>%
+                 unite(action_type, matches("action\\_.*" ), remove = T) %>%
+                 replace_na(list(val = "0")) %>%
+                 pivot_wider(names_from = "action_type", values_from = "val", values_fill = list("val" = "0"))
+               
+               if ( exists("action_df") ) {
+                 
+                 action_df <- bind_cols(action_df, df_conversion) 
+                 
+               } else {
+                 
+                 action_df <- bind_cols(other_col, df_conversion) 
+                 
+               }
              } 
              
              if ( length(.x$action_values ) > 0 ) {
@@ -52,17 +73,17 @@ fbAction.default <- function( obj ) {
                  pivot_longer(cols = -matches("action\\_.*" ), names_to = "action_sufix", values_to = "val") %>%
                  mutate(action_type = paste0("action_values.", action_type)) %>%
                  unite(action_type, matches("action\\_.*" ), remove = T) %>%
-                 replace_na(list(val = 0)) %>%
+                 replace_na(list(val = "0")) %>%
                  pivot_wider(names_from = "action_type", values_from = "val", values_fill = list("val" = "0")) 
                
                
-               if ( exists("df_actions") ) {
+               if ( exists("action_df") ) {
                  
-                 df <- bind_cols(df_actions, df_action_values) 
+                 action_df <- bind_cols(action_df, df_action_values) 
                  
                } else {
                  
-                 df <- bind_cols(other_col, df_action_values) 
+                 action_df <- bind_cols(other_col, df_action_values) 
                  
                }
                
@@ -76,27 +97,27 @@ fbAction.default <- function( obj ) {
                pivot_longer(cols = -matches("action\\_.*" ), names_to = "action_sufix", values_to = "val") %>%
                mutate(action_type = paste0("video_thruplay", action_type)) %>%
                unite(action_type, matches("action\\_.*" ), remove = T) %>%
-               replace_na(list(val = 0)) %>%
+               replace_na(list(val = "0")) %>%
                pivot_wider(names_from = "action_type", values_from = "val", values_fill = list("val" = "0")) 
              
-             if ( exists("df") ) {
+             if ( exists("action_df") ) {
                
-               df <- bind_cols(df, df_video) 
+               action_df <- bind_cols(action_df, df_video) 
                
              } else {
                
-               df <- bind_cols(other_col, df_video) 
+               action_df <- bind_cols(other_col, df_video) 
                
              }
              }
              
-             if ( length( .x$actions ) + length( .x$action_values ) == 0 ) {
+             if ( length( .x$actions ) + length( .x$action_values ) + length(.x$video_thruplay_watched_actions ) + length(.x$conversions ) == 0 ) {
                
                other_col
                
              } else {
                
-               df
+               action_df
                
              }
              

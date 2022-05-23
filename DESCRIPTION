@@ -1,8 +1,8 @@
 Package: rfacebookstat
 Type: Package
 Title: Load Data from Facebook API Marketing
-Version: 2.5.0
-Date: 2021-12-15
+Version: 2.6.2
+Date: 2022-05-23
 Authors@R: 
     c(person(given  = "Alexey",
              family = "Seleznev",
@@ -22,10 +22,10 @@ URL: https://selesnow.github.io/rfacebookstat/,
         https://www.youtube.com/playlist?list=PLD2LDq8edf4pItOb-vZTG5AXZK2niJ8_R
 License: MIT + file LICENSE
 Suggests: knitr, rmarkdown
-VignetteBuilder: knitr
 Encoding: UTF-8
-Language: ru
+Language: ru_RU
+RoxygenNote: 7.1.2
 NeedsCompilation: no
-Packaged: 2021-12-15 08:55:18 UTC; Alsey
+Packaged: 2022-05-23 14:14:25 UTC; Alsey
 Repository: CRAN
-Date/Publication: 2021-12-16 12:00:02 UTC
+Date/Publication: 2022-05-23 14:50:02 UTC
