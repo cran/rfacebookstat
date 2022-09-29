@@ -1,7 +1,7 @@
-5e988cf1d0d543114c139f7150532a70 *DESCRIPTION
+cc4d44f9334a38dd03d962e291752e1f *DESCRIPTION
 805330b4edcd4e8c0a03cf59aa53bd89 *LICENSE
 618a88054c7fdf66a000683d6d593bb0 *NAMESPACE
-c723010695abd86f1c1e932f827606c9 *NEWS.md
+081e253c707cccd6539fe1707311544e *NEWS.md
 00488cfb4e6faf4de0482e93c9cdd30c *R/authorization.R
 25992005c009393490f6ecc87690700e *R/fbAPILimitCheck.R
 f6c70ffbfbb7b307fbb93e0ddcfaabe8 *R/fbActions.R
@@ -30,10 +30,10 @@ a32c918c8ff4fd06d144fce3b45a5769 *R/fbGetCostData.R
 689ecfb640b0fc73705a4b589e15e0c9 *R/fbSetters.R
 599c80038a5472d9ff53fb3ce8dfae9c *R/fbUpdateAdAccountUsers.R
 febaa369f8c197c3c7a5a3f46ed29078 *R/sysdata.rda
-71d3b505858d81826852986262c86d3f *R/zzz.R
+d3896f197de76fae5aeaf781979e264e *R/zzz.R
 3892580a601db1251f629610a43eda2d *README.md
-9e45f30d2134077324863b909331cecf *build/partial.rdb
-1f5406717955cd277edc997a86e5db5e *build/vignette.rds
+97aab42c7f15bedd2146b1c4dd3889da *build/partial.rdb
+23819cf81602abcc585d6d2f2cfbba8c *build/vignette.rds
 de53d4c0f95010497d3dddf5b7fa5c44 *inst/doc/rfacebookstat-authorization.R
 e0c2a2aedfc8785b0469dce13e9a163b *inst/doc/rfacebookstat-authorization.Rmd
 2a5ae4122729e22efd251b66bddefd35 *inst/doc/rfacebookstat-authorization.html
