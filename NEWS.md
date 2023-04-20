@@ -1,3 +1,15 @@
+# rfacebookstat 2.9.2
+
+* Исправил аргументы в функции `fbAction()`, для согласованности с `fbAction.default()`.
+
+# rfacebookstat 2.9.1
+
+* Добавил в NAMESPACE регистрацию S3 методов.
+
+# rfacebookstat 2.9.0
+
+* Пакет переведён на работу с Facebook API Marketing v16.0
+
 # rfacebookstat 2.8.1
 
 * Убрал все манипуляции с опцией stringsAsFactors согласно требованиям CRAN.
