@@ -1,3 +1,7 @@
+# rfacebookstat 2.9.3
+
+* Пересборка для CRAN
+
 # rfacebookstat 2.9.2
 
 * Исправил аргументы в функции `fbAction()`, для согласованности с `fbAction.default()`.
