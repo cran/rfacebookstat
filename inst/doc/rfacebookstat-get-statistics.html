@@ -372,7 +372,7 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 к API Facebook, так же этот аргумент будет более подробно рассмотрен
 немного ниже.</li>
 <li><em>fields</em> - Поля которые вы хотите загрузить из API, полный
-список всех полей доступен по <a href="https://developers.facebook.com/docs/marketing-api/insights/parameters#fields">ссылке</a>.</li>
+список всех полей доступен по <a href="https://developers.facebook.com/docs/marketing-api/reference/ad-account/insights">ссылке</a>.</li>
 <li><em>filtering</em> - Текстовая строка или вектор. Фильтрацию отчёта
 вы можете задавать либо в JSON формате либо в упрощенном формате, более
 подробно о фильтрации будет написано немного ниже.</li>
@@ -426,20 +426,20 @@ API.</li>
 </div>
 <div id="пример-запроса-статистики" class="section level2">
 <h2>Пример запроса статистики</h2>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rfacebookstat)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">rfacebookstat.access_token =</span> <span class="st">&quot;ваш токен&quot;</span>,</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>        <span class="at">rfacebookstat.accounts_id  =</span> <span class="st">&quot;act_000000000&quot;</span>)</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>fb_data <span class="ot">&lt;-</span> <span class="fu">fbGetMarketingStat</span>(</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>                  <span class="at">level              =</span> <span class="st">&quot;campaign&quot;</span>,</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>                  <span class="at">fields             =</span> <span class="st">&quot;campaign_name,</span></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="st">                                        impressions,</span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="st">                                        clicks,</span></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="st">                                        spend,</span></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="st">                                        actions&quot;</span>,</span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>                  <span class="at">date_start         =</span> <span class="st">&quot;2019-05-01&quot;</span>,</span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>                  <span class="at">date_stop          =</span> <span class="st">&quot;2019-05-10&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="fu">library</span>(rfacebookstat)</span>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a><span class="fu">options</span>(<span class="at">rfacebookstat.access_token =</span> <span class="st">&quot;ваш токен&quot;</span>,</span>
+<span id="cb1-4"><a href="#cb1-4" tabindex="-1"></a>        <span class="at">rfacebookstat.accounts_id  =</span> <span class="st">&quot;act_000000000&quot;</span>)</span>
+<span id="cb1-5"><a href="#cb1-5" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" tabindex="-1"></a>fb_data <span class="ot">&lt;-</span> <span class="fu">fbGetMarketingStat</span>(</span>
+<span id="cb1-7"><a href="#cb1-7" tabindex="-1"></a>                  <span class="at">level              =</span> <span class="st">&quot;campaign&quot;</span>,</span>
+<span id="cb1-8"><a href="#cb1-8" tabindex="-1"></a>                  <span class="at">fields             =</span> <span class="st">&quot;campaign_name,</span></span>
+<span id="cb1-9"><a href="#cb1-9" tabindex="-1"></a><span class="st">                                        impressions,</span></span>
+<span id="cb1-10"><a href="#cb1-10" tabindex="-1"></a><span class="st">                                        clicks,</span></span>
+<span id="cb1-11"><a href="#cb1-11" tabindex="-1"></a><span class="st">                                        spend,</span></span>
+<span id="cb1-12"><a href="#cb1-12" tabindex="-1"></a><span class="st">                                        actions&quot;</span>,</span>
+<span id="cb1-13"><a href="#cb1-13" tabindex="-1"></a>                  <span class="at">date_start         =</span> <span class="st">&quot;2019-05-01&quot;</span>,</span>
+<span id="cb1-14"><a href="#cb1-14" tabindex="-1"></a>                  <span class="at">date_stop          =</span> <span class="st">&quot;2019-05-10&quot;</span>)</span></code></pre></div>
 <p>Выше приведён простейший способ загрузки статистики по показам,
 кликам, тратам и действиям в разрезе дней и рекламных кампаний.
 Использование опций <em>rfacebookstat.access_token</em> и
@@ -488,21 +488,21 @@ accout_id, access_token, business_id и api_version.</p>
 </ul>
 <p>Актуальный список группировок всегда можно найти в официальной
 документации API Facebook по <a href="https://developers.facebook.com/docs/marketing-api/insights/breakdowns#ageandgender">ссылке</a>.</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rfacebookstat)</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">rfacebookstat.access_token =</span> <span class="st">&quot;ваш токен&quot;</span>,</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>        <span class="at">rfacebookstat.accounts_id  =</span> <span class="st">&quot;act_000000000&quot;</span>)</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>fb_data_breakdowns <span class="ot">&lt;-</span> <span class="fu">fbGetMarketingStat</span>(</span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">level              =</span> <span class="st">&quot;campaign&quot;</span>,</span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">fields             =</span> <span class="st">&quot;campaign_name,</span></span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="st">                        impressions,</span></span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="st">                        clicks,</span></span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="st">                        spend,</span></span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="st">                        actions&quot;</span>,</span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">breakdowns         =</span> <span class="st">&quot;region&quot;</span>,</span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>  <span class="at">date_start         =</span> <span class="st">&quot;2019-05-01&quot;</span>,</span>
-<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>  <span class="at">date_stop          =</span> <span class="st">&quot;2019-05-10&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="fu">library</span>(rfacebookstat)</span>
+<span id="cb2-2"><a href="#cb2-2" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" tabindex="-1"></a><span class="fu">options</span>(<span class="at">rfacebookstat.access_token =</span> <span class="st">&quot;ваш токен&quot;</span>,</span>
+<span id="cb2-4"><a href="#cb2-4" tabindex="-1"></a>        <span class="at">rfacebookstat.accounts_id  =</span> <span class="st">&quot;act_000000000&quot;</span>)</span>
+<span id="cb2-5"><a href="#cb2-5" tabindex="-1"></a></span>
+<span id="cb2-6"><a href="#cb2-6" tabindex="-1"></a>fb_data_breakdowns <span class="ot">&lt;-</span> <span class="fu">fbGetMarketingStat</span>(</span>
+<span id="cb2-7"><a href="#cb2-7" tabindex="-1"></a>  <span class="at">level              =</span> <span class="st">&quot;campaign&quot;</span>,</span>
+<span id="cb2-8"><a href="#cb2-8" tabindex="-1"></a>  <span class="at">fields             =</span> <span class="st">&quot;campaign_name,</span></span>
+<span id="cb2-9"><a href="#cb2-9" tabindex="-1"></a><span class="st">                        impressions,</span></span>
+<span id="cb2-10"><a href="#cb2-10" tabindex="-1"></a><span class="st">                        clicks,</span></span>
+<span id="cb2-11"><a href="#cb2-11" tabindex="-1"></a><span class="st">                        spend,</span></span>
+<span id="cb2-12"><a href="#cb2-12" tabindex="-1"></a><span class="st">                        actions&quot;</span>,</span>
+<span id="cb2-13"><a href="#cb2-13" tabindex="-1"></a>  <span class="at">breakdowns         =</span> <span class="st">&quot;region&quot;</span>,</span>
+<span id="cb2-14"><a href="#cb2-14" tabindex="-1"></a>  <span class="at">date_start         =</span> <span class="st">&quot;2019-05-01&quot;</span>,</span>
+<span id="cb2-15"><a href="#cb2-15" tabindex="-1"></a>  <span class="at">date_stop          =</span> <span class="st">&quot;2019-05-10&quot;</span>)</span></code></pre></div>
 </div>
 <div id="разбивки-по-действиям-action_breakdowns" class="section level2">
 <h2>Разбивки по действиям (action_breakdowns)</h2>
@@ -531,21 +531,21 @@ accout_id, access_token, business_id и api_version.</p>
 отметки «Нравится» Страницы, установки приложений, конверсии, ответы на
 мероприятия и т.д.</li>
 </ul>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rfacebookstat)</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">rfacebookstat.access_token =</span> <span class="st">&quot;ваш токен&quot;</span>,</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>        <span class="at">rfacebookstat.accounts_id  =</span> <span class="st">&quot;act_000000000&quot;</span>)</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>fb_data_action_breakdowns <span class="ot">&lt;-</span> <span class="fu">fbGetMarketingStat</span>(</span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">level              =</span> <span class="st">&quot;campaign&quot;</span>,</span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">fields             =</span> <span class="st">&quot;campaign_name,</span></span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="st">                        impressions,</span></span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="st">                        clicks,</span></span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="st">                        spend,</span></span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="st">                        actions&quot;</span>,</span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">action_breakdowns  =</span> <span class="st">&quot;action_reaction&quot;</span>,</span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>  <span class="at">date_start         =</span> <span class="st">&quot;2019-05-01&quot;</span>,</span>
-<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>  <span class="at">date_stop          =</span> <span class="st">&quot;2019-05-10&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a><span class="fu">library</span>(rfacebookstat)</span>
+<span id="cb3-2"><a href="#cb3-2" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" tabindex="-1"></a><span class="fu">options</span>(<span class="at">rfacebookstat.access_token =</span> <span class="st">&quot;ваш токен&quot;</span>,</span>
+<span id="cb3-4"><a href="#cb3-4" tabindex="-1"></a>        <span class="at">rfacebookstat.accounts_id  =</span> <span class="st">&quot;act_000000000&quot;</span>)</span>
+<span id="cb3-5"><a href="#cb3-5" tabindex="-1"></a></span>
+<span id="cb3-6"><a href="#cb3-6" tabindex="-1"></a>fb_data_action_breakdowns <span class="ot">&lt;-</span> <span class="fu">fbGetMarketingStat</span>(</span>
+<span id="cb3-7"><a href="#cb3-7" tabindex="-1"></a>  <span class="at">level              =</span> <span class="st">&quot;campaign&quot;</span>,</span>
+<span id="cb3-8"><a href="#cb3-8" tabindex="-1"></a>  <span class="at">fields             =</span> <span class="st">&quot;campaign_name,</span></span>
+<span id="cb3-9"><a href="#cb3-9" tabindex="-1"></a><span class="st">                        impressions,</span></span>
+<span id="cb3-10"><a href="#cb3-10" tabindex="-1"></a><span class="st">                        clicks,</span></span>
+<span id="cb3-11"><a href="#cb3-11" tabindex="-1"></a><span class="st">                        spend,</span></span>
+<span id="cb3-12"><a href="#cb3-12" tabindex="-1"></a><span class="st">                        actions&quot;</span>,</span>
+<span id="cb3-13"><a href="#cb3-13" tabindex="-1"></a>  <span class="at">action_breakdowns  =</span> <span class="st">&quot;action_reaction&quot;</span>,</span>
+<span id="cb3-14"><a href="#cb3-14" tabindex="-1"></a>  <span class="at">date_start         =</span> <span class="st">&quot;2019-05-01&quot;</span>,</span>
+<span id="cb3-15"><a href="#cb3-15" tabindex="-1"></a>  <span class="at">date_stop          =</span> <span class="st">&quot;2019-05-10&quot;</span>)</span></code></pre></div>
 <div id="описание-полей-возвращаемых-в-разбивке-action_type" class="section level3">
 <h3>Описание полей возвращаемых в разбивке action_type</h3>
 <ul>
@@ -690,22 +690,22 @@ impression_device *</li>
 7d_view_28d_click, 28d_view_28d_click.</p>
 <div id="пример-использования-окон-атрибуции" class="section level3">
 <h3>Пример использования окон атрибуции</h3>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rfacebookstat)</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">rfacebookstat.access_token =</span> <span class="st">&quot;ваш токен&quot;</span>,</span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>        <span class="at">rfacebookstat.accounts_id  =</span> <span class="st">&quot;act_000000000&quot;</span>)</span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>fb_data_action_breakdowns <span class="ot">&lt;-</span> <span class="fu">fbGetMarketingStat</span>(</span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">level              =</span> <span class="st">&quot;campaign&quot;</span>,</span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">fields             =</span> <span class="st">&quot;campaign_name,</span></span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="st">                        impressions,</span></span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="st">                        clicks,</span></span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="st">                        spend,</span></span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="st">                        actions&quot;</span>,</span>
-<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">action_breakdowns  =</span> <span class="st">&quot;action_reaction&quot;</span>,</span>
-<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>  <span class="at">attribution_window =</span> <span class="fu">c</span>(<span class="st">&#39;default&#39;</span>, <span class="st">&#39;1d_view&#39;</span>, <span class="st">&#39;28d_view&#39;</span>, <span class="st">&#39;28d_click&#39;</span>),</span>
-<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>  <span class="at">date_start         =</span> <span class="st">&quot;2019-05-01&quot;</span>,</span>
-<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>  <span class="at">date_stop          =</span> <span class="st">&quot;2019-05-10&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a><span class="fu">library</span>(rfacebookstat)</span>
+<span id="cb4-2"><a href="#cb4-2" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" tabindex="-1"></a><span class="fu">options</span>(<span class="at">rfacebookstat.access_token =</span> <span class="st">&quot;ваш токен&quot;</span>,</span>
+<span id="cb4-4"><a href="#cb4-4" tabindex="-1"></a>        <span class="at">rfacebookstat.accounts_id  =</span> <span class="st">&quot;act_000000000&quot;</span>)</span>
+<span id="cb4-5"><a href="#cb4-5" tabindex="-1"></a></span>
+<span id="cb4-6"><a href="#cb4-6" tabindex="-1"></a>fb_data_action_breakdowns <span class="ot">&lt;-</span> <span class="fu">fbGetMarketingStat</span>(</span>
+<span id="cb4-7"><a href="#cb4-7" tabindex="-1"></a>  <span class="at">level              =</span> <span class="st">&quot;campaign&quot;</span>,</span>
+<span id="cb4-8"><a href="#cb4-8" tabindex="-1"></a>  <span class="at">fields             =</span> <span class="st">&quot;campaign_name,</span></span>
+<span id="cb4-9"><a href="#cb4-9" tabindex="-1"></a><span class="st">                        impressions,</span></span>
+<span id="cb4-10"><a href="#cb4-10" tabindex="-1"></a><span class="st">                        clicks,</span></span>
+<span id="cb4-11"><a href="#cb4-11" tabindex="-1"></a><span class="st">                        spend,</span></span>
+<span id="cb4-12"><a href="#cb4-12" tabindex="-1"></a><span class="st">                        actions&quot;</span>,</span>
+<span id="cb4-13"><a href="#cb4-13" tabindex="-1"></a>  <span class="at">action_breakdowns  =</span> <span class="st">&quot;action_reaction&quot;</span>,</span>
+<span id="cb4-14"><a href="#cb4-14" tabindex="-1"></a>  <span class="at">attribution_window =</span> <span class="fu">c</span>(<span class="st">&#39;default&#39;</span>, <span class="st">&#39;1d_view&#39;</span>, <span class="st">&#39;28d_view&#39;</span>, <span class="st">&#39;28d_click&#39;</span>),</span>
+<span id="cb4-15"><a href="#cb4-15" tabindex="-1"></a>  <span class="at">date_start         =</span> <span class="st">&quot;2019-05-01&quot;</span>,</span>
+<span id="cb4-16"><a href="#cb4-16" tabindex="-1"></a>  <span class="at">date_stop          =</span> <span class="st">&quot;2019-05-10&quot;</span>)</span></code></pre></div>
 <p>Более подробно об окнах атрибуции в Facebook можно узнать по
 следующим ссылкам:</p>
 <ul>
@@ -731,20 +731,20 @@ LESS_THAN, LESS_THAN_OR_EQUAL, IN_RANGE, NOT_IN_RANGE, CONTAIN,
 NOT_CONTAIN, IN, NOT_IN, STARTS_WITH, ANY, ALL, AFTER, BEFORE, NONE</p>
 <div id="пример-фильтрации-в-упрощенном-формате" class="section level3">
 <h3>Пример фильтрации в упрощенном формате</h3>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rfacebookstat)</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">rfacebookstat.access_token =</span> <span class="st">&quot;ваш токен&quot;</span>,</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>        <span class="at">rfacebookstat.accounts_id  =</span> <span class="st">&quot;act_000000000&quot;</span>)</span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>fb_data <span class="ot">&lt;-</span> <span class="fu">fbGetMarketingStat</span>(</span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">level              =</span> <span class="st">&quot;campaign&quot;</span>,</span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">fields             =</span> <span class="st">&quot;campaign_name,</span></span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="st">                        impressions,</span></span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="st">                        clicks,</span></span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="st">                        spend,</span></span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="st">                        actions&quot;</span>,</span>
-<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">filtering          =</span> <span class="st">&quot;impressions LESS_THAN 5000&quot;</span>,</span>
-<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">date_start         =</span> <span class="st">&quot;2019-05-01&quot;</span>,</span>
-<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>  <span class="at">date_stop          =</span> <span class="st">&quot;2019-05-10&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a><span class="fu">library</span>(rfacebookstat)</span>
+<span id="cb5-2"><a href="#cb5-2" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" tabindex="-1"></a><span class="fu">options</span>(<span class="at">rfacebookstat.access_token =</span> <span class="st">&quot;ваш токен&quot;</span>,</span>
+<span id="cb5-4"><a href="#cb5-4" tabindex="-1"></a>        <span class="at">rfacebookstat.accounts_id  =</span> <span class="st">&quot;act_000000000&quot;</span>)</span>
+<span id="cb5-5"><a href="#cb5-5" tabindex="-1"></a>fb_data <span class="ot">&lt;-</span> <span class="fu">fbGetMarketingStat</span>(</span>
+<span id="cb5-6"><a href="#cb5-6" tabindex="-1"></a>  <span class="at">level              =</span> <span class="st">&quot;campaign&quot;</span>,</span>
+<span id="cb5-7"><a href="#cb5-7" tabindex="-1"></a>  <span class="at">fields             =</span> <span class="st">&quot;campaign_name,</span></span>
+<span id="cb5-8"><a href="#cb5-8" tabindex="-1"></a><span class="st">                        impressions,</span></span>
+<span id="cb5-9"><a href="#cb5-9" tabindex="-1"></a><span class="st">                        clicks,</span></span>
+<span id="cb5-10"><a href="#cb5-10" tabindex="-1"></a><span class="st">                        spend,</span></span>
+<span id="cb5-11"><a href="#cb5-11" tabindex="-1"></a><span class="st">                        actions&quot;</span>,</span>
+<span id="cb5-12"><a href="#cb5-12" tabindex="-1"></a>  <span class="at">filtering          =</span> <span class="st">&quot;impressions LESS_THAN 5000&quot;</span>,</span>
+<span id="cb5-13"><a href="#cb5-13" tabindex="-1"></a>  <span class="at">date_start         =</span> <span class="st">&quot;2019-05-01&quot;</span>,</span>
+<span id="cb5-14"><a href="#cb5-14" tabindex="-1"></a>  <span class="at">date_stop          =</span> <span class="st">&quot;2019-05-10&quot;</span>)</span></code></pre></div>
 <p>В приведённом примере мы указали фильтр
 <code>impressions LESS_THAN 5000</code> и таким образом оставили строки
 в которых поле impressions имеет значение менее 5000.</p>
@@ -752,38 +752,38 @@ NOT_CONTAIN, IN, NOT_IN, STARTS_WITH, ANY, ALL, AFTER, BEFORE, NONE</p>
 NOT_IN_RANGE, IN, NOT_IN) то в упрошенном формате запись будет выглядеть
 так: <code>&quot;publisher_platform IN instagram,facebook&quot;</code>. Важно не
 ставить проблемы между списком значений.</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rfacebookstat)</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">rfacebookstat.access_token =</span> <span class="st">&quot;ваш токен&quot;</span>,</span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>        <span class="at">rfacebookstat.accounts_id  =</span> <span class="st">&quot;act_000000000&quot;</span>)</span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>fb_data <span class="ot">&lt;-</span> <span class="fu">fbGetMarketingStat</span>(</span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">level              =</span> <span class="st">&quot;campaign&quot;</span>,</span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">fields             =</span> <span class="st">&quot;campaign_name,</span></span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="st">                        impressions,</span></span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="st">                        clicks,</span></span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="st">                        spend,</span></span>
-<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a><span class="st">                        actions&quot;</span>,</span>
-<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">filtering          =</span> <span class="st">&quot;publisher_platform IN instagram,facebook&quot;</span>,</span>
-<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">breakdowns         =</span> <span class="st">&quot;publisher_platform&quot;</span>,</span>
-<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>  <span class="at">date_start         =</span> <span class="st">&quot;2019-05-01&quot;</span>,</span>
-<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>  <span class="at">date_stop          =</span> <span class="st">&quot;2019-05-10&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a><span class="fu">library</span>(rfacebookstat)</span>
+<span id="cb6-2"><a href="#cb6-2" tabindex="-1"></a></span>
+<span id="cb6-3"><a href="#cb6-3" tabindex="-1"></a><span class="fu">options</span>(<span class="at">rfacebookstat.access_token =</span> <span class="st">&quot;ваш токен&quot;</span>,</span>
+<span id="cb6-4"><a href="#cb6-4" tabindex="-1"></a>        <span class="at">rfacebookstat.accounts_id  =</span> <span class="st">&quot;act_000000000&quot;</span>)</span>
+<span id="cb6-5"><a href="#cb6-5" tabindex="-1"></a>fb_data <span class="ot">&lt;-</span> <span class="fu">fbGetMarketingStat</span>(</span>
+<span id="cb6-6"><a href="#cb6-6" tabindex="-1"></a>  <span class="at">level              =</span> <span class="st">&quot;campaign&quot;</span>,</span>
+<span id="cb6-7"><a href="#cb6-7" tabindex="-1"></a>  <span class="at">fields             =</span> <span class="st">&quot;campaign_name,</span></span>
+<span id="cb6-8"><a href="#cb6-8" tabindex="-1"></a><span class="st">                        impressions,</span></span>
+<span id="cb6-9"><a href="#cb6-9" tabindex="-1"></a><span class="st">                        clicks,</span></span>
+<span id="cb6-10"><a href="#cb6-10" tabindex="-1"></a><span class="st">                        spend,</span></span>
+<span id="cb6-11"><a href="#cb6-11" tabindex="-1"></a><span class="st">                        actions&quot;</span>,</span>
+<span id="cb6-12"><a href="#cb6-12" tabindex="-1"></a>  <span class="at">filtering          =</span> <span class="st">&quot;publisher_platform IN instagram,facebook&quot;</span>,</span>
+<span id="cb6-13"><a href="#cb6-13" tabindex="-1"></a>  <span class="at">breakdowns         =</span> <span class="st">&quot;publisher_platform&quot;</span>,</span>
+<span id="cb6-14"><a href="#cb6-14" tabindex="-1"></a>  <span class="at">date_start         =</span> <span class="st">&quot;2019-05-01&quot;</span>,</span>
+<span id="cb6-15"><a href="#cb6-15" tabindex="-1"></a>  <span class="at">date_stop          =</span> <span class="st">&quot;2019-05-10&quot;</span>)</span></code></pre></div>
 <p>Если вы хотите применить несколько фильтров, то вы можете передать в
 аргумент <code>filtering</code> вектор из выражений, например:
 <code>c(&quot;clicks LESS_THAN 500&quot;, &quot;impressions GREATER_THAN 1000&quot;)</code>.</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rfacebookstat)</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">rfacebookstat.access_token =</span> <span class="st">&quot;ваш токен&quot;</span>,</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>        <span class="at">rfacebookstat.accounts_id  =</span> <span class="st">&quot;act_000000000&quot;</span>)</span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>fb_data <span class="ot">&lt;-</span> <span class="fu">fbGetMarketingStat</span>(</span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">level              =</span> <span class="st">&quot;campaign&quot;</span>,</span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">fields             =</span> <span class="st">&quot;campaign_name,</span></span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="st">                        impressions,</span></span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="st">                        clicks,</span></span>
-<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a><span class="st">                        spend,</span></span>
-<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a><span class="st">                        actions&quot;</span>,</span>
-<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">filtering          =</span> <span class="fu">c</span>(<span class="st">&quot;clicks LESS_THAN 500&quot;</span>, <span class="st">&quot;impressions GREATER_THAN 1000&quot;</span>),</span>
-<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">date_start         =</span> <span class="st">&quot;2019-05-01&quot;</span>,</span>
-<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>  <span class="at">date_stop          =</span> <span class="st">&quot;2019-05-10&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a><span class="fu">library</span>(rfacebookstat)</span>
+<span id="cb7-2"><a href="#cb7-2" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="#cb7-3" tabindex="-1"></a><span class="fu">options</span>(<span class="at">rfacebookstat.access_token =</span> <span class="st">&quot;ваш токен&quot;</span>,</span>
+<span id="cb7-4"><a href="#cb7-4" tabindex="-1"></a>        <span class="at">rfacebookstat.accounts_id  =</span> <span class="st">&quot;act_000000000&quot;</span>)</span>
+<span id="cb7-5"><a href="#cb7-5" tabindex="-1"></a>fb_data <span class="ot">&lt;-</span> <span class="fu">fbGetMarketingStat</span>(</span>
+<span id="cb7-6"><a href="#cb7-6" tabindex="-1"></a>  <span class="at">level              =</span> <span class="st">&quot;campaign&quot;</span>,</span>
+<span id="cb7-7"><a href="#cb7-7" tabindex="-1"></a>  <span class="at">fields             =</span> <span class="st">&quot;campaign_name,</span></span>
+<span id="cb7-8"><a href="#cb7-8" tabindex="-1"></a><span class="st">                        impressions,</span></span>
+<span id="cb7-9"><a href="#cb7-9" tabindex="-1"></a><span class="st">                        clicks,</span></span>
+<span id="cb7-10"><a href="#cb7-10" tabindex="-1"></a><span class="st">                        spend,</span></span>
+<span id="cb7-11"><a href="#cb7-11" tabindex="-1"></a><span class="st">                        actions&quot;</span>,</span>
+<span id="cb7-12"><a href="#cb7-12" tabindex="-1"></a>  <span class="at">filtering          =</span> <span class="fu">c</span>(<span class="st">&quot;clicks LESS_THAN 500&quot;</span>, <span class="st">&quot;impressions GREATER_THAN 1000&quot;</span>),</span>
+<span id="cb7-13"><a href="#cb7-13" tabindex="-1"></a>  <span class="at">date_start         =</span> <span class="st">&quot;2019-05-01&quot;</span>,</span>
+<span id="cb7-14"><a href="#cb7-14" tabindex="-1"></a>  <span class="at">date_stop          =</span> <span class="st">&quot;2019-05-10&quot;</span>)</span></code></pre></div>
 </div>
 <div id="пример-фильтрации-в-json-формате" class="section level3">
 <h3>Пример фильтрации в JSON формате</h3>
