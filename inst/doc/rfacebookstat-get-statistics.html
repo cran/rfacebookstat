@@ -49,7 +49,7 @@ overflow: visible;
 </style>
 <style type="text/css" data-origin="pandoc">
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -60,7 +60,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
 { counter-reset: source-line 0; }
@@ -814,7 +814,7 @@ NOT_IN_RANGE, IN, NOT_IN) то в упрошенном формате запис
 <h2>Лимиты API и аргумент request_speed</h2>
 <p>По использованию аргумента <code>request_speed</code> есть целая <a href="https://alexeyseleznev.wordpress.com/2017/12/26/rfacebookstat-1-5-0-%D0%BA%D0%B0%D0%BA-%D0%BF%D1%80%D0%B0%D0%B2%D0%B8%D0%BB%D1%8C%D0%BD%D0%BE-%D0%B8%D1%81%D0%BF%D0%BE%D0%BB%D1%8C%D0%B7%D0%BE%D0%B2%D0%B0%D1%82%D1%8C-%D0%B0%D1%80%D0%B3%D1%83%D0%BC/">статья</a>,
 но я всё же немного опишу зачем данный аргумент нужен.</p>
-<p>В API Facebook на данный момент существует 2 уровня доступа к API (<a href="https://developers.facebook.com/docs/marketing-api/overview/authorization">раздел
+<p>В API Facebook на данный момент существует 2 уровня доступа к API (<a href="https://developers.facebook.com/docs/marketing-api/get-started/authorization">раздел
 в справке</a> API Facebook):</p>
 <ul>
 <li>Разработка - Тестирование приложений с помощью API.</li>

@@ -1,3 +1,6 @@
+# rfacebookstat 2.12.0
+* Пакет переведён на работу с Facebook Marketing API v.21.
+
 # rfacebookstat 2.11.0
 
 * Исправлена ошибка, при которой в функции `fbGetMarketingStat()` не работал аргумент `use_unified_attribution_setting` если не использовался аргумент `fetch_by`.

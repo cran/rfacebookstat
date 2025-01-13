@@ -1,4 +1,4 @@
-## ---- include = FALSE---------------------------------------------------------
+## ----include = FALSE----------------------------------------------------------
 knitr::opts_chunk$set(
   eval=FALSE,
   collapse = TRUE,
@@ -6,24 +6,24 @@ knitr::opts_chunk$set(
 )
 
 ## ----setup--------------------------------------------------------------------
-#  library(rfacebookstat)
+# library(rfacebookstat)
 
 ## -----------------------------------------------------------------------------
-#  library(rfacebookstat)
-#  
-#  fbAuth()
+# library(rfacebookstat)
+# 
+# fbAuth()
 
 ## -----------------------------------------------------------------------------
-#  print(fbAuth(), show_token = T)
+# print(fbAuth(), show_token = T)
 
 ## -----------------------------------------------------------------------------
-#  fbGetAdAccounts()
+# fbGetAdAccounts()
 
 ## -----------------------------------------------------------------------------
-#  fbAuth(app_id      = 556970798471513,
-#         app_secret  = "10fbc64e0c426feb4e774395c97237fa",
-#         username    = "seleznev_a",
-#         skip_option = TRUE,
-#         reauth      = FALSE,
-#         token_path  = "D:/fb_auth_store")
+# fbAuth(app_id      = 556970798471513,
+#        app_secret  = "10fbc64e0c426feb4e774395c97237fa",
+#        username    = "seleznev_a",
+#        skip_option = TRUE,
+#        reauth      = FALSE,
+#        token_path  = "D:/fb_auth_store")
 

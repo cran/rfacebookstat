@@ -1,7 +1,7 @@
 Package: rfacebookstat
 Type: Package
 Title: Load Data from Facebook API Marketing
-Version: 2.11.0
+Version: 2.12.0
 Authors@R: 
     c(person(given  = "Alexey",
              family = "Seleznev",
@@ -24,7 +24,7 @@ Encoding: UTF-8
 RoxygenNote: 7.2.3
 VignetteBuilder: knitr
 NeedsCompilation: no
-Packaged: 2024-07-11 15:27:54 UTC; SAMSUNG
+Packaged: 2025-01-13 12:22:48 UTC; User
 Author: Alexey Seleznev [aut, cre] (<https://orcid.org/0000-0003-0410-7385>)
 Repository: CRAN
-Date/Publication: 2024-07-11 15:50:02 UTC
+Date/Publication: 2025-01-13 13:00:02 UTC
