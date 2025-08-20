@@ -1,11 +1,12 @@
-d9a27144ad284832c11e6022c2ebcf93 *DESCRIPTION
+39f48ee71ed22e95c69556147078334f *DESCRIPTION
 805330b4edcd4e8c0a03cf59aa53bd89 *LICENSE
-c7dd46890b5d67ddc8b3a801afa7b403 *NAMESPACE
-34a3bb9ff99a9e7857d71d197e8bbeb8 *NEWS.md
+04a16a7c6b801687f4ec9e720ffdd33a *NAMESPACE
+caeb139b87975e61374107adc736dcb0 *NEWS.md
 820eafd315de6c97d5fd444ffddc07e0 *R/authorization.R
 e99d1a8ebaa39083b04dca8786aa4a47 *R/fbAPILimitCheck.R
 85d17280f132f2cadffedc199ee3d780 *R/fbActions.R
 68ec3430cb0fb05565722da51b17446d *R/fbDeleteAdAccountUsers.R
+abb60c258180cd8f50424ce43e845e3a *R/fbErrors.R
 d6afb5d0472e56cd6cc9336410d3e495 *R/fbGetAdAccountCustomAudiences.R
 94427e2464cb3e7ec3481e3f3c3ef264 *R/fbGetAdAccountUsers.R
 ecdd1b64affcb65f7f3a180f2e41fe32 *R/fbGetAdAccountUsersPermissions.R
@@ -14,7 +15,7 @@ c099191f535e5f3eab8936cb3debd689 *R/fbGetAdAccounts.R
 3f4b4d730ac921fcf5b471981563bf43 *R/fbGetAdCreative.R
 23ce053e9f24ae3440ed77844f76bc24 *R/fbGetAdSets.R
 20d5bcca6ac52f1526cef09f178052fc *R/fbGetAdVideos.R
-c7331035b45d3d82111f80374c8212c0 *R/fbGetAds.R
+3e1c2f5796415b66524abd98c4eb265b *R/fbGetAds.R
 70ab3cda3ae617377b4bb7cfa35861ae *R/fbGetApps.R
 1168cd823069607ec2b0bf9a8e4827d4 *R/fbGetBusinessManagers.R
 8df529c426789bc5ceba6b16b9ce6dbf *R/fbGetBusinessManagersUsers.R
@@ -30,9 +31,9 @@ a32c918c8ff4fd06d144fce3b45a5769 *R/fbGetCostData.R
 689ecfb640b0fc73705a4b589e15e0c9 *R/fbSetters.R
 599c80038a5472d9ff53fb3ce8dfae9c *R/fbUpdateAdAccountUsers.R
 febaa369f8c197c3c7a5a3f46ed29078 *R/sysdata.rda
-e50e9510f777957ff659c8cc3cf2fb5c *R/zzz.R
-8e3365308de904274f40c4b3aea22f44 *README.md
-042760416fe5959692e193f144c09c62 *build/partial.rdb
+fafb0d1fd3f16c71e64f3ef2273b7460 *R/zzz.R
+ea4a946ddcbe4f2ee9bd4b852a55e7f6 *README.md
+23b0be53790f8f256bf17c9a20446ff1 *build/partial.rdb
 c88182ef01403757e6e312c8020a7029 *build/vignette.rds
 7c2831f9c9a02f8fb45fe60b8d4844b5 *inst/doc/rfacebookstat-authorization.R
 e0c2a2aedfc8785b0469dce13e9a163b *inst/doc/rfacebookstat-authorization.Rmd
@@ -54,7 +55,7 @@ ad5db2eb90aa1291d3303939114c0b51 *man/fbDeleteAdAccountUsers.Rd
 d86f8e60796f1dfda580c9269b0f8b0d *man/fbGetAdCreative.Rd
 6356a8785d2cc51324c6e5bdda29e24c *man/fbGetAdSets.Rd
 7539307f1e63895905fed753badfb3ee *man/fbGetAdVideos.Rd
-a3a08faa7dd1adb5b45e8a0e0f0fa620 *man/fbGetAds.Rd
+e9441bd7d12e8c9de02b7e5a0bce75db *man/fbGetAds.Rd
 ce639e090256c63693a9bc1f4e42d74f *man/fbGetApps.Rd
 0de5f6408952e5c470a38d7c4983065a *man/fbGetBusinessManagers.Rd
 364da34959df831b317a4b40659b9d01 *man/fbGetBusinessManagersUsers.Rd
@@ -71,7 +72,7 @@ e5850a314040eae994de4ec9e12a41f3 *man/fbGetLogins.Rd
 a1dbb2f9e67311d7e53cfcd5027e3414 *man/fbGetUserAdAccounts.Rd
 33cd8aa4b9d884b4e914f79b219eda11 *man/fbSetters.Rd
 12d828aedf8f6a589733e52ef2b22218 *man/fbUpdateAdAccountUsers.Rd
-1b3dcc27fb6ab222d0a28a1f228ece93 *man/rfacebookstat-package.Rd
+4244b7621e510ef2cfa7425cd3073322 *man/rfacebookstat-package.Rd
 e0c2a2aedfc8785b0469dce13e9a163b *vignettes/rfacebookstat-authorization.Rmd
 1389b3ec9321a652da8dde0a58152092 *vignettes/rfacebookstat-cost-data.Rmd
 199493ce3578370dbe0744b45d058535 *vignettes/rfacebookstat-get-statistics.Rmd
