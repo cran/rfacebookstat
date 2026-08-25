@@ -1,7 +1,21 @@
+# rfacebookstat 2.16.1
+* Исправлены ссылки в документации по требованию CRAN.
+
+# rfacebookstat 2.16.0
+* Пакет переведён на работу с Facebook Marketing API v26.0.
+* В функцию `fbGetAdSets()` добавлено новое поле `advantage_audience` для отслеживания настроек таргетинга в HEF-кампаниях.
+* В функцию `fbGetAds()` добавлено новое поле `ad_disclaimer` для получения юридических дисклеймеров объявлений.
+
+# rfacebookstat 2.15.0
+* Добавлена функция `fbGetBusinessInvoices()` для загрузки счетов из Бизнес-менеджера.
+* Добавлена функция `fbDownloadBusinessInvoices()` для векторизированного скачивания PDF-счетов.
+* Исправлен баг в функции `fbGetMarketingStat()`, из-за которого списки экшенов, отличные от стандартных (например, метрики удержания видео `video_p25_watched_actions` - `video_p100_watched_actions` или запуски `video_play_actions`), отбрасывались и удалялись из итоговой таблицы при парсинге. Теперь любые списки результатов, оканчивающиеся на `_actions`, корректно парсятся и возвращаются.
+
 # rfacebookstat 2.14.0
 * Пакет переведён на работу с Facebook Marketing API v25.0.
 * В функцию `fbGetAdSets()` добавлено новое поле `is_adset_budget_sharing_enabled`.
 * Улучшена обработка ошибок в функции `fbGetMarketingStat()`, теперь выводятся более подробные сообщения `error_user_title` и `error_user_msg`.
+* В функцию `fbGetAdAccounts()` добавлен аргумент `limit`. Значение по умолчанию снижено со 100 до 50 для избежания ошибки `An unexpected error has occurred. Please retry your request later.` на больших бизнес-менеджерах.
 
 # rfacebookstat 2.13.1
 * Небольшие правки документации пакета для отправки на CRAN.

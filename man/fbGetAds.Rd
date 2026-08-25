@@ -17,7 +17,8 @@ fbGetAds(
                      "account_id",
                      "configured_status",
                      "effective_status",
-                     "creative"),
+                     "creative",
+                     "ad_disclaimer"),
     api_version  = getOption("rfacebookstat.api_version"),
     username     = getOption("rfacebookstat.username"),
     token_path   = fbTokenPath(),
@@ -26,7 +27,7 @@ fbGetAds(
 }
 \arguments{
   \item{accounts_id}{Your account ID, for example 'act_11111111111111111'.}
-  \item{fields}{Character vector of fields what you need, list of available fields <https://developers.facebook.com/docs/marketing-api/reference/adgroup/#---->.}
+  \item{fields}{Character vector of fields what you need, list of available fields <https://developers.facebook.com/documentation/ads-commerce/marketing-api/reference/adgroup>.}
   \item{api_version}{Current Facebook API version.}
   \item{username}{your username on Facebook}
   \item{token_path}{path to dir with credentials}

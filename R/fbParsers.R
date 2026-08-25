@@ -22,7 +22,8 @@ fbParserAds <- function(x) {
          bid_amount        = fbNullReplacer(x$bid_amount) ,
          bid_type          = x$bid_type,
          configured_status = x$configured_status,
-         effective_status  = x$effective_status)
+         effective_status  = x$effective_status,
+         ad_disclaimer     = fbNullReplacer(x$ad_disclaimer))
   )
   
 }
@@ -48,7 +49,8 @@ fbParserAdsets <- function(x) {
          daily_budget      = fbNullReplacer(x$daily_budget),
          created_time      = x$created_time,
          source_adset_id   = fbNullReplacer(x$source_adset_id),
-         is_adset_budget_sharing_enabled = fbNullReplacer(x$is_adset_budget_sharing_enabled)
+         is_adset_budget_sharing_enabled = fbNullReplacer(x$is_adset_budget_sharing_enabled),
+         advantage_audience              = fbNullReplacer(x$advantage_audience)
          )
   )
   
@@ -204,3 +206,29 @@ fbParserBMUsers <- function(x, user_type) {
   )
   
 }
+
+# business invoices parser
+fbParserBusinessInvoices <- function(x) {
+  
+  return(
+    list(id               = x$id,
+         invoice_id       = fbNullReplacer(x$invoice_id),
+         type             = fbNullReplacer(x$type),
+         amount           = fbNullReplacer(x$amount),
+         amount_due       = fbNullReplacer(x$amount_due),
+         currency         = fbNullReplacer(x$currency),
+         invoice_date     = fbNullReplacer(x$invoice_date),
+         billing_period   = fbNullReplacer(x$billing_period),
+         payment_status   = fbNullReplacer(x$payment_status),
+         download_uri     = fbNullReplacer(x$download_uri),
+         cdn_download_uri = fbNullReplacer(x$cdn_download_uri),
+         advertiser_name  = fbNullReplacer(x$advertiser_name),
+         ad_account_ids   = ifelse(is.null(x$ad_account_ids), 
+                                   NA, 
+                                   paste0(lapply(x$ad_account_ids, 
+                                                 function (acc) paste0(acc)), collapse = ","))
+    )
+  )
+  
+}
+
