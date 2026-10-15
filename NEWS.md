@@ -1,3 +1,6 @@
+# rfacebookstat 2.17.0
+* Добавлена новая функция `fbGetAdAccount()` для точечного запроса данных по конкретному рекламному аккаунту или вектору аккаунтов по их ID.
+
 # rfacebookstat 2.16.1
 * Исправлены ссылки в документации по требованию CRAN.
 
@@ -123,7 +126,7 @@
 
 * Пакет переведён на работу с API v12.0
 * Исправлена работа аргумента interval в функции `fbGetMarketingStat()`.
-* В функции `fbAuth()` и `fbGetToken()` отдельным аргументом выделен scopes, который позволяет по необходимости исключать неиспользуемые разрешения, например business_management. Более подробно о разрешениях можно почитать в [справоке](https://developers.facebook.com/docs/permissions).
+* В функции `fbAuth()` и `fbGetToken()` отдельным аргументом выделен scopes, который позволяет по необходимости исключать неиспользуемые разрешения, например business_management. Более подробно о разрешениях можно почитать в [справоке](https://developers.facebook.com/documentation/development/permissions).
 
 # rfacebookstat 2.4.0
 
